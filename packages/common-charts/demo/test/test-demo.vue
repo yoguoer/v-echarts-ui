@@ -1,9 +1,8 @@
 <template>
-    <div>
-      <p>哈哈哈</p>
-    </div>
-  </template>
+  <vEchartsTest />
+</template>
 
-<script>
+<script setup lang="ts">
+import vEchartsTest from '../../components/test'
 
 </script>

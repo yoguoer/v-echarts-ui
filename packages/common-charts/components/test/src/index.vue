@@ -1,8 +1,12 @@
 <template>
-    <span>哈哈哈哈哈哈</span>
-    <el-input placeholder="hahaha" />
+    <span>哈哈哈哈哈哈</span><br/>
+    <el-input placeholder="hahaha" style="width: 300px;"/>
 </template>
 
-<script setup lang="ts" name="vEchartsTest">
-
+<script setup lang="ts" name="Test">
+</script>
+<script>
+export default {
+  name: "Test",
+};
 </script>

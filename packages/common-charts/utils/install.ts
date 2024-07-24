@@ -1,4 +1,4 @@
-import vEchartsTest from './components/test'
+import vEchartsTest from '../components/test'
 
 // 存储组件列表
 const components = [

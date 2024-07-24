@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import sourceCode from './plugins/source-code'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    sourceCode()//将 Markdown 文件中的代码示例转换为可显示在网页上的代码片段
   ],
   build: {
     outDir: 'lib',

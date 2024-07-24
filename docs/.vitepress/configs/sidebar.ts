@@ -17,7 +17,7 @@ export default {
     {
       text: '基础图表',
       items: [
-        { text: '测试', link: '/zh-CN/components/common-charts/table/readme' },
+        { text: '测试', link: '/zh-CN/components/common-charts/test/readme' },
         { text: '折线图', link: '/zh-CN/components/common-charts/Bar/readme' },
         { text: '条形图', link: '/zh-CN/components/common-charts/Line/readme' },
         { text: '饼图', link: '/zh-CN/components/common-charts/Pie/readme' },

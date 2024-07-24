@@ -32,11 +32,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const menuList = reactive([
-  { title: "测试", name: "tableDemo" },
+  { title: "测试", name: "testDemo" },
   {
     title: "基础图表",
     name: "common-charts",
-    children: [{ title: "测试", name: "tableDemo" }],
+    children: [{ title: "测试", name: "testDemo" }],
   },
 ]);
 

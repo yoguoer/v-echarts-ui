@@ -6,5 +6,5 @@
 
 <vEcharts-demo
     demo-height="300px"
-    source-code="common-charts:::table/table-demo"
+    source-code="common-charts:::test/test-demo"
 />

@@ -1,8 +1,8 @@
-import vEchartsTable from './components/table'
+import vEchartsTest from './components/test'
 
 // 存储组件列表
 const components = [
-  vEchartsTable,
+  vEchartsTest,
 ]
 
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册

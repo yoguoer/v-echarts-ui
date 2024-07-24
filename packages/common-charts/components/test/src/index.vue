@@ -3,6 +3,6 @@
     <el-input placeholder="hahaha" />
 </template>
 
-<script setup lang="ts" name="TTable">
+<script setup lang="ts" name="vEchartsTest">
 
 </script>

@@ -1,3 +1,3 @@
 export * from './components'
-export { installer as commonChartsInstall } from './install'
+export { installer as commonChartsInstall } from './utils/install'
 

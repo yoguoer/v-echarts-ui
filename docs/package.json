@@ -2,6 +2,7 @@
   "name": "v-echarts",
   "author": "Vivien",
   "license": "MIT",
+  "description":"v-echarts文档",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

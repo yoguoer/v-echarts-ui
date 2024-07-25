@@ -2,12 +2,13 @@ import { defineConfig } from 'vitepress'
 import nav from './configs/nav'
 import sidebar from './configs/sidebar'
 import footer from './configs/footer'
+import { docsSite } from '../../config/site'
 
 export default defineConfig({
-  title: 'v-echarts图表组件文档',
-  description: '基于echarts图表组件封装使用',
+  title: 'v-echarts',
+  description: 'v-echarts 是一个基于echarts和Vue3封装的图表组件库，主要用于快速构建数据可视化页面。',
   lang: 'zh-CN',
-  base: '/v-echarts',
+  base: `${docsSite}/`,
   lastUpdated: true,
   themeConfig: {
     logo: '/favicon.ico',
@@ -18,6 +19,9 @@ export default defineConfig({
     ],
     nav,
     sidebar,
-    footer
+    footer,
+    search: {
+      provider: 'local'
+    }
   },
 })

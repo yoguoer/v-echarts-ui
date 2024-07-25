@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Vivien",
   "license": "MIT",
-  "description": "基础图表",
+  "description": "v-echarts基础图表",
   "main": "./index.ts",
   "moudle": "./index.ts",
   "types": "./index.d.ts",

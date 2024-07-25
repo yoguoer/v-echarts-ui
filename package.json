@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Vivien",
   "license": "MIT",
+  "description":"v-echarts",
   "workspaces": [
     "packages/*",
     "docs"

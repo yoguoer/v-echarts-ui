@@ -9,11 +9,20 @@ export default defineConfig({
   description: 'v-echarts 是一个基于echarts和Vue3封装的图表组件库，主要用于快速构建数据可视化页面。',
   lang: 'zh-CN',
   base: `${docsSite}/`,
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/img/vivien-logo.svg'
+      }
+    ]
+  ],
   lastUpdated: true,
   themeConfig: {
-    logo: '/favicon.ico',
-    siteTitle: 'v-echarts',
-    outline: 3,
+    logo: '/img/vivien-logo.svg',
+    // siteTitle: 'v-echarts',
+    // outline: 3,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/yoguoer' }
     ],

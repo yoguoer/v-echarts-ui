@@ -1,11 +1,11 @@
 ---
 title: v-echarts
-titleTemplate: echarts Vue3 Charts Component Library
-description: echarts & Vue3 Charts Component Library
+titleTemplate: Vue3 Charts Component Library
+description: Vue3 Charts Component Library
 head:
   - - meta
     - name: description
-      content: v-echarts is echarts & Vue3 Charts Component Library
+      content: v-echarts is a Vue3 Charts Component Library
   - - meta
     - name: keywords
       content: v-echarts echarts Vue3 Charts Component Library
@@ -18,7 +18,7 @@ lastUpdated: true
 hero:
   name: v-echarts
   text: vue3图表组件
-  tagline: Vue3 中基于echarts二次封装图表组件文档
+  tagline: Vue3 中基于echarts二次封装的图表组件文档
   image:
     src: /img/avator.jpg
     alt: v-echarts

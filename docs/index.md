@@ -1,6 +1,7 @@
 ---
-titleTemplate: v-echarts echarts Vue3 Charts Component Library
-description: v-echarts is echarts & Vue3 Charts Component Library
+title: v-echarts
+titleTemplate: echarts Vue3 Charts Component Library
+description: echarts & Vue3 Charts Component Library
 head:
   - - meta
     - name: description
@@ -10,7 +11,7 @@ head:
       content: v-echarts echarts Vue3 Charts Component Library
 
 layout: home
-title: v-echarts
+
 # titleTemplate: 选项卡描述
 editLink: true
 lastUpdated: true

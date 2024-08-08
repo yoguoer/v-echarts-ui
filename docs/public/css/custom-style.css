@@ -3,19 +3,21 @@ body {
 }
 
 :root {
+  /* 覆盖默认颜色 */
   --vp-c-brand: #646cff;
   --vp-c-brand-light: #747bff;
   --vp-c-brand-lighter: #9499ff;
   --vp-c-brand-lightest: #bcc0ff;
   --vp-c-brand-dark: #535bf2;
   --vp-c-brand-darker: #454ce1;
-  --vp-custom-block-tip-border:#646cff;
-  --vp-code-block-bg: #f9fafb;
+  --vp-code-block-bg: #f6f6f7;
+  /* 自定义一些颜色 */
   --demoblock-border: #e7e7e7;
   --ve-border-radius-base: 6px;
   --ve-custom-block-details-bg: #f1f2fa;
   --ve-c-text-2:#060b74;
   --ve-c-text-1:#787eec;
+  --ve-vp-custom-block-tip: #f5fbf9;
 }
 
 .demo-block .meta {
@@ -39,6 +41,7 @@ html.dark {
 /* 提示框 */
 .custom-block.tip {
   border-color: var(--vp-c-green-2);
+  background-color: var(--ve-vp-custom-block-tip);
 }
 
 /* 警告框 */

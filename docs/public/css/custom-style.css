@@ -1,3 +1,7 @@
+body {
+  font-size: 15px;
+}
+
 :root {
   --vp-c-brand: #646cff;
   --vp-c-brand-light: #747bff;
@@ -5,8 +9,9 @@
   --vp-c-brand-lightest: #bcc0ff;
   --vp-c-brand-dark: #535bf2;
   --vp-c-brand-darker: #454ce1;
-  --demoblock-border: #e7e7e7;
+  --vp-custom-block-tip-border:#646cff;
   --vp-code-block-bg: #f9fafb;
+  --demoblock-border: #e7e7e7;
   --ve-border-radius-base: 6px;
   --ve-custom-block-details-bg: #f1f2fa;
   --ve-c-text-2:#060b74;
@@ -16,14 +21,34 @@
 .demo-block .meta {
   background-color: var(--vp-code-block-bg);
 }
+
 .demo-block .t_layout_page {
   overflow: visible;
   padding: 0;
 }
+
 .demo-block .t_layout_page .t_layout_page_item {
   padding: 0;
   margin: 0;
 }
+
 html.dark {
   --vp-code-block-bg: var(--vp-c-bg-alt);
+}
+
+/* 提示框 */
+.custom-block.tip {
+  border-color: var(--vp-c-green-2);
+}
+
+/* 警告框 */
+.custom-block.warning {
+  /* border-color: #d97706; */
+  border-color: var(--vp-c-yellow-2);
+}
+
+/* 危险框 */
+.custom-block.danger {
+  /* border-color: #f43f5e; */
+  border-color: var(--vp-c-red-2);
 }

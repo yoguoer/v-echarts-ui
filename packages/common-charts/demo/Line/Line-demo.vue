@@ -1,10 +1,11 @@
-# 使用指南
-    使用基础图表时，可以与后端协定好固定的接口数据返回格式，更方便复用。以下是本组件库适用的统一数据结构说明。
-## 条形图和折线图
-```javascript
-{
-    "stat_config_key": "键值key",
-    "data": {
+<template>
+  <vLine :data="data"/>
+</template>
+
+<script setup lang="ts">
+import vLine from '../../components/Line'
+
+const data = {
         "xAxis": [
             "A",
             "B",
@@ -37,7 +38,4 @@
         "row": [],
         "msg": ""
     }
-}
-```
-
-
+</script>

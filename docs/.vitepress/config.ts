@@ -7,7 +7,6 @@ import { docsSite } from '../../config/site'
 export default defineConfig({
   title: 'v-echarts',
   description: 'v-echarts 是一个基于echarts和Vue3封装的图表组件库，主要用于快速构建数据可视化页面。',
-  lang: 'zh-CN',
   base: `${docsSite}/`,
   head: [
     [
@@ -18,7 +17,7 @@ export default defineConfig({
       }
     ]
   ],
-  lastUpdated: true,
+  // lastUpdated: true,
   themeConfig: {
     logo: '/img/vivien-logo.svg',
     // siteTitle: 'v-echarts',

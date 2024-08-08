@@ -24,7 +24,9 @@
   "keywords": [],
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "echarts": "^5.5.1",
     "element-plus": "^2.6.2",
+    "sass-embedded": "^1.77.8",
     "swiper": "^8.4.5",
     "vite": "^5.3.3",
     "vue-awesome-swiper": "^5.0.1"

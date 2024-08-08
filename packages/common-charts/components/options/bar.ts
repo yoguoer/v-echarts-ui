@@ -1,5 +1,5 @@
 import { recursionObject, isObject } from '../utils/index.ts'
-import echart from '../theme/theme.scss'
+import echart from '../theme/theme.json'
 import { getMarkLine, getTooltip, getToolBox, yAxis, axisLabel } from './common.ts'
 
 /**

@@ -1,6 +1,6 @@
 import { recursionObject, isArray } from  '../utils/index.ts'
 import { getToolBox } from './common.ts'
-import echart from '../theme/theme.scss'
+import echart from '../theme/theme.json'
 
 /**
  * 获取默认配置参数

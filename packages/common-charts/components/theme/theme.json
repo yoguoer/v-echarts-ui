@@ -1,0 +1,17 @@
+{  
+  "theme": "#999999",  
+  "lengendColors": ["#409eff", "#e6a23c", "#67c23a", "#d87c7c", "#22e4b5", "#b6a2de", "#e4bc20", "#d95850", "#74B5F9"],  
+  "chartPrimary": "rgba(255, 255, 255, 1)",  
+  "chartfontSize": "12px",  
+  "fontColor": "#000000",  
+  "markLineColor": "yellow",  
+  "platformColor": "#67c23a",  
+  "projectColor": "#e6a23c",  
+  "standardColor": "#0098d9",  
+  "declarationColor": "#b6a2de",  
+  "chartHeight": "300px",  
+  "success": "#67C23A",  
+  "warning": "#E6A23C",  
+  "danger": "#ED1731",  
+  "info": "#909399"  
+}

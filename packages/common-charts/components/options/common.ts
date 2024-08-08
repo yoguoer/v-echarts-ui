@@ -1,4 +1,4 @@
-import echart from '../theme/theme.scss'
+import echart from '../theme/theme.json'
 import { sumArray } from '../utils/index.ts'
 /**
  * 柱状图平均值线配置

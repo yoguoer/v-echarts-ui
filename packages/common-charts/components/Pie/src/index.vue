@@ -8,13 +8,13 @@
 <script>
 import * as echarts from "echarts/core";
 import { PieChart } from "echarts/charts";
-import common from "../../mixins/common.ts";
+// import common from "../../mixins/common.ts";
 import { pieOptions } from "../../options/pie.ts";
 import Tips from "../../Extend/Tips.vue";
 
 export default {
   name: 'Pie',
-  mixins: [common],
+//   mixins: [common],
   props: {
     id: {
       type: String,
@@ -41,8 +41,9 @@ export default {
   .tips {
     z-index: 1000000000;
     position: absolute;
-    right: 5px;
-    top: 0;
+    right: 14px;
+    top: 6px;
+    width: 15px;
   }
 }
 </style>

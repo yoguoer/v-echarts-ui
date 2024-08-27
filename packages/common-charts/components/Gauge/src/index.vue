@@ -16,11 +16,11 @@ import {
 import { GaugeChart, BarChart } from 'echarts/charts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { getDefaultOptions } from '../../options/guage.ts'
-import common from '../../mixins/common.ts'
+// import common from '../../mixins/common.ts'
 
 export default {
   name: 'Gauge',
-  mixins: [common],
+//   mixins: [common],
   props: {
     id: {
       type: String,

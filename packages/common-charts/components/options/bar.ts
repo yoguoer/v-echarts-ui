@@ -47,6 +47,8 @@ class itemStyle {
   * @param { Object } data 源数据
  */
 class defaultOptTemp {
+  option: any; // 或更具体的类型  
+
   constructor({ options, data }) {
     this.option = {
       toolbox: getToolBox(options),
@@ -112,7 +114,7 @@ class defaultOptTemp {
               type: 'bar',
               markLine: getMarkLine(options, data),
               barGap: '20%',
-              barCategoryGap: '50%',
+              barCategoryGap: '100%',
               stack: (options.stackIndex && options.stackIndex.indexOf(i) > -1),
               // eslint-disable-next-line new-cap
               itemStyle: new itemStyle({ options })
@@ -195,19 +197,19 @@ class defaultOptTemp {
   }
 }
 
-export function barOptions(vue) {
-  const { data } = vue._props
+export function barOptions(props) {
+  const { data } = props
 
   /* eslint-disable */
-  const getDefaultOpt = new defaultOptTemp({ options: vue._props.params, data }).option
+  const getDefaultOpt = new defaultOptTemp({ options: props.options, data }).option
 
 
-  const opt = recursionObject({}, getDefaultOpt, vue._props.options)
+  const opt = recursionObject({}, getDefaultOpt, props.options)
   //实例传入自定义 series 配置时，递归合并默认 series 配置和实例配置参数
-  if (vue._props.options.series) {
-    opt.series = recursionObject([], getDefaultOpt.series, vue._props.options.series)
+  if (props.options.series) {
+    opt.series = recursionObject([], getDefaultOpt.series, props.options.series)
   }
-  if (vue.params.dataset && data.length > 1) {
+  if (props.options.dataset && data.length > 1) {
     // 纵向bar
     opt.dataset.source = data.reverse()
     opt.dataset.dimensions = Object.keys(data[0])

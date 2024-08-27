@@ -1,54 +1,64 @@
-<template>
-  <div class="container">
-    <el-popover
-      v-bind="$attrs"
-      placement="top-start"
-      trigger="hover"
-      :title="$attrs.title || '计算公式'"
-      v-on="$listeners"
-    >
-      <i slot="reference" class="el-icon-s-opportunity" />
-      <div class="content-container">
-        <el-divider class="divider" />
-        <div class="content">{{ tips }}</div>
-      </div>
-    </el-popover>
-  </div>
-</template>
+<template>  
+  <div class="tips-container">  
+    <el-popover  
+      v-bind="$attrs"  
+      v-on="$attrs"  
+      placement="top-start"  
+      trigger="hover"  
+      :title="title || '计算公式'"  
+    >  
+      <template #reference>
+        <Opportunity /> 
+      </template> 
+      <div class="content-container">  
+        <el-divider class="divider" />  
+        <div class="content">{{ tips }}</div>  
+      </div>  
+    </el-popover>  
+  </div>  
+</template>  
+  
+<script setup lang="ts">  
+import { defineProps } from 'vue';  
+import { Opportunity } from '@element-plus/icons-vue';
 
-<script>
+// 定义props  
+const props = defineProps({
+    tips: {  
+        type: String, 
+        default: null  
+    }, 
+    title: {  
+        type: String,  
+        default: ''  
+    }  
+})
+</script>  
+<script lang="ts">
 export default {
-  name: 'Tips',
-  props: {
-    tips: {
-      type: String,
-      default: null
-    }
-  },
-  computed: {},
-  created() {}
+    name: 'Tips',
 }
 </script>
 
-<style lang="scss" scoped>
-.container {
-  .el-icon-s-opportunity {
-    font-size: 18px;
-    cursor: pointer;
-    &:hover {
-      color: #E6A23C;
-    }
-  }
-}
-
-.content-container {
-  padding: 0 10px 10px 10px;
-  .divider {
-    margin: 5px 0;
-  }
-  .content {
-    white-space: pre-wrap;
-    text-overflow: ellipsis;
-  }
-}
+<style lang="scss" scoped>  
+.tips-container {  
+  .el-icon-s-opportunity {  
+    font-size: 18px;  
+    cursor: pointer;  
+    &:hover {  
+      color: #E6A23C;  
+    }  
+  }  
+}  
+  
+.content-container {  
+  padding: 0 10px 10px 10px;  
+  .divider {  
+    margin: 5px 0;  
+  }  
+  .content {  
+    white-space: pre-wrap;  
+    text-overflow: ellipsis;  
+  }  
+}  
 </style>

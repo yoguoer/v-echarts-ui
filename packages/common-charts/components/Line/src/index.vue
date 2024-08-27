@@ -9,7 +9,7 @@
 <script>
 import * as echarts from 'echarts/core'
 import { LineChart } from 'echarts/charts'
-import common from '../../mixins/common.ts'
+// import common from '../../mixins/common.ts'
 import { lineOptions } from '../../options/line.ts'
 import Tips from '../../Extend/Tips.vue'
 import Checkbox from '../../Extend/Checkbox.vue'
@@ -24,13 +24,14 @@ import {
   MarkPointComponent,
   MarkLineComponent
 } from 'echarts/components'
+
 export default {
   name: 'Line',
   components: {
     Tips,
     Checkbox
   },
-  mixins: [common],
+//   mixins: [common],
   props: {
     id: {
       type: String,
@@ -76,8 +77,9 @@ export default {
   .tips {
     z-index: 1000000000;
     position: absolute;
-    right: 9px;
-    top: 0;
+    right: 14px;
+    top: 6px;
+    width: 15px;
   }
 
   .checkbox {

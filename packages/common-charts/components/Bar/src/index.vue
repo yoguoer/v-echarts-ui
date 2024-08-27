@@ -8,7 +8,7 @@
         :initChecked="checked"
         @setShowLabel="handleShowLabel" />
     </div>
-    <div :id="id" :style="{ height: height, width: width }" ref="chartRef" />
+    <div :id="id" :style="{ height: height, width: width }" ref="barChartRef" />
   </div>
 </template>
 
@@ -26,9 +26,9 @@ import {
 } from 'echarts/components';
 import Tips from '../../Extend/Tips.vue';
 import Checkbox from '../../Extend/Checkbox.vue';
-import { barOptions } from '../../options/bar.ts';
-import { setShowLabel } from '../../options/utils.ts';
-import { useECharts } from '../../mixins/common.ts';
+import { barOptions } from '../../options/bar';
+import { setShowLabel } from '../../options/utils';
+import { useECharts } from '../../mixins/common';
 
 // 注册必须的 echarts 组件
 echarts.use([
@@ -55,26 +55,55 @@ const emit = defineEmits([
 ]);
 
 // 定义 props
-const props = defineProps<{
-  id: string;
-  height?: string;
-  width?: string;
-  showCheckbox?: boolean;
-  showTips?: boolean;
-  className?: String;
-  options?: Object;
-  data?: Object;
-  params?: Object;
-  loading?: Boolean;
-}>();
-
+const props = defineProps({
+  id: {
+    type: String,
+    default: null,
+  },
+  height: {
+    type: String,
+    default: '500px',
+  },
+  width: {
+    type: String,
+    default: '100%',
+  },
+  showCheckbox: {
+    type: Boolean,
+    default: true,
+  },
+  showTips: {
+    type: Boolean,
+    default: true,
+  },
+  className: {
+    type: String,
+    default: null,
+  },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
+  data: {
+    type: Object,
+    default: () => ({}),
+  },
+  params: {
+    type: Object,
+    dfault: () => ({}),
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
 const checked = ref(true);
 
 const chartOptions = computed(() => barOptions(props));
 
 // 定义一个 ref 用于 DOM 引用
-const chartRef = ref<HTMLElement | null>(null);
-const { chart } = useECharts(chartRef, chartOptions.value, props.data, emit);
+const barChartRef = ref<HTMLElement | null>(null);
+const { chart } = useECharts(barChartRef, chartOptions.value, props.data, emit);
 
 function handleShowLabel(newChecked: boolean) {
   checked.value = newChecked;

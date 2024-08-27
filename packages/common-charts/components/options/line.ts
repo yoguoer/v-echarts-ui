@@ -20,20 +20,11 @@ function getSeriesConfig({ seriesItem, options, params }) {
     markLine: getMarkLine()
   }
 }
-/**
- * 获取默认配置参数
- * @param { Object } lineParams 实例配置参数：
- * {
- *      position: 'top', // 柱状图数字提示位置
- *      isCross: false, // 柱状图是否为横向,
- *      stackIndex: [1, 2], // 堆叠图形下标值
- *      dataset: false, //源数据是否为 dataset 格式
- *      showAverage: true // 是否显示平均线
- * }
- */
+
 class defaultOpt {
+  option: any; // 或更具体的类型
   constructor(lineParams) {
-    this.options = {
+    this.option = {
       toolbox: getToolBox(lineParams),
       tooltip: getTooltip(lineParams),
       title: {
@@ -75,13 +66,13 @@ class defaultOpt {
   }
 }
 
-export function lineOptions(vue) {
-  const { data } = vue._props
+export function lineOptions(props) {
+  const { data } = props
   /* eslint-disable */
-  const getDefaultOpt = new defaultOpt(vue._props.params).options;
-  const opt = recursionObject({}, getDefaultOpt, vue._props.options);
+  const getDefaultOpt = new defaultOpt(props.params).option
+  const opt = recursionObject({}, getDefaultOpt, props.options);
   //使用数据集处理
-  if (vue._props.params.dataset && data.length > 1) {
+  if (props.params.dataset && data.length > 1) {
     const dataset = {
       source: data,
       dimensions: Object.keys(data[0])
@@ -100,7 +91,7 @@ export function lineOptions(vue) {
             getSeriesConfig({
               series: item,
               options: opt,
-              params: vue._props.params
+              params: props.params
             })
           )
         ) || [];

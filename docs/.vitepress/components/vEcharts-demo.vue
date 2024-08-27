@@ -238,4 +238,8 @@ export default {
     }
   }
 }
+::v-deep code{
+    max-width: 688px;
+    white-space:break-spaces;
+}
 </style>

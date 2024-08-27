@@ -1,19 +1,26 @@
 <template>
   <div class="container">
-    <Tips v-if="showTips && tips" class="tips" :tips="tips" />
-    <Checkbox v-if="showCheckbox" class="checkbox" :initChecked="checked" @setShowLabel="setShowLabel" />
-    <div :id="id" :class="className" :style="{ height: height, width: width }" />
+    <div class="tools">
+      <Tips v-if="showTips && props?.data?.msg" class="tips" :tips="props?.data?.msg" :title="props?.data?.msgTitle"/>
+      <Checkbox
+        v-if="showCheckbox"
+        class="checkbox"
+        :initChecked="checked"
+        @setShowLabel="handleShowLabel" />
+    </div>
+    <div :id="id" :style="{ height: height, width: width }" ref="lineChartRef" />
   </div>
 </template>
 
-<script>
-import * as echarts from 'echarts/core'
-import { LineChart } from 'echarts/charts'
-// import common from '../../mixins/common.ts'
-import { lineOptions } from '../../options/line.ts'
-import Tips from '../../Extend/Tips.vue'
-import Checkbox from '../../Extend/Checkbox.vue'
-import { setShowLabel } from "../../options/utils"
+<script setup lang="ts">
+import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue';
+import * as echarts from 'echarts/core';
+import { LineChart } from 'echarts/charts';
+import Tips from '../../Extend/Tips.vue';
+import Checkbox from '../../Extend/Checkbox.vue';
+import { lineOptions } from '../../options/line';
+import { setShowLabel } from '../../options/utils';
+import { useECharts } from '../../mixins/common';
 
 import {
   TitleComponent,
@@ -22,71 +29,119 @@ import {
   GridComponent,
   LegendComponent,
   MarkPointComponent,
-  MarkLineComponent
-} from 'echarts/components'
+  MarkLineComponent,
+} from 'echarts/components';
 
+echarts.use([
+  TitleComponent,
+  ToolboxComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  MarkPointComponent,
+  MarkLineComponent,
+  LineChart,
+]);
+
+const emit = defineEmits([
+  `chart-click`,
+  'chart-dblclick',
+  'chart-mousedown',
+  'chart-mousemove',
+  'chart-mouseup',
+  'chart-mouseover',
+  'chart-mouseout',
+  'chart-globalout',
+  'chart-contextmenu',
+  'chart-legendselectchanged',
+]);
+
+// 定义 props
+const props = defineProps({
+  id: {
+    type: String,
+    default: null,
+  },
+  height: {
+    type: String,
+    default: '500px',
+  },
+  width: {
+    type: String,
+    default: '100%',
+  },
+  showCheckbox: {
+    type: Boolean,
+    default: true,
+  },
+  showTips: {
+    type: Boolean,
+    default: true,
+  },
+  className: {
+    type: String,
+    default: null,
+  },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
+  data: {
+    type: Object,
+    default: () => ({}),
+  },
+  params: {
+    type: Object,
+    dfault: () => ({}),
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const checked = ref(true);
+
+const chartOptions = computed(() => lineOptions(props));
+
+// 定义一个 ref 用于 DOM 引用
+const lineChartRef = ref<HTMLElement | null>(null);
+const { chart } = useECharts(lineChartRef, chartOptions.value, props.data, emit);
+
+function handleShowLabel(newChecked: boolean) {
+  checked.value = newChecked;
+  setShowLabel(chartOptions.value, newChecked);
+  chart.value.setOption(chartOptions.value);
+}
+
+onBeforeUpdate(() => {
+  chart.value.setOption(chartOptions.value);
+});
+</script>
+<script lang="ts">
 export default {
   name: 'Line',
-  components: {
-    Tips,
-    Checkbox
-  },
-//   mixins: [common],
-  props: {
-    id: {
-      type: String,
-      default: 'lineChart',
-      require: true
-    }
-  },
-  data() {
-    return {
-      checked: true
-    }
-  },
-  methods: {
-    setShowLabel(checked) {
-      this.checked = checked
-      setShowLabel(this.charOptions,this.checked)
-      this.setOption()
-    }
-  },
-  computed: {
-    charOptions() {
-      return lineOptions(this)
-    }
-  },
-  beforeCreate() {
-    echarts.use([
-      TitleComponent,
-      ToolboxComponent,
-      TooltipComponent,
-      GridComponent,
-      LegendComponent,
-      MarkPointComponent,
-      MarkLineComponent,
-      LineChart
-    ])
-  }
-}
+};
 </script>
 <style lang="scss" scoped>
 .container {
   position: relative;
+  .tools {
+    display: flex;
+    justify-content: flex-end;
+    .tips {
+      z-index: 1000000000;
+      position: relative;
+      right: -2px;
+      top: 30px;
+    }
 
-  .tips {
-    z-index: 1000000000;
-    position: absolute;
-    right: 14px;
-    top: 6px;
-    width: 15px;
-  }
-
-  .checkbox {
-    z-index: 1000000000;
-    position: absolute;
-    right: -5px;
-    top: 0;
+    .checkbox {
+      z-index: 1000000000;
+      position: relative;
+      right: 0px;
+      top: 30px;
+    }
   }
 }
 </style>

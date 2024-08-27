@@ -1,41 +1,160 @@
 <template>
-  <vLine :data="data"/>
+  <vLine
+    :data="chartData"
+    :options="chartOptions"
+    :params="params"
+    :height="height"
+    :width="width"
+    :showCheckbox="true"
+    :showTips="true"
+    :id="id"
+    :loading="false" />
 </template>
 
 <script setup lang="ts">
-import vLine from '../../components/Line'
+import vLine from '../../components/Line';
+import { computed, onMounted, ref } from 'vue';
 
-const data = {
-        "xAxis": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
+const id = 'bar';
+const chartData = ref();
+const width = '100%'; // 可选
+const height = '500px'; // 可选
+
+const chartOptions = computed(() => {
+  return {
+    title: {
+      show: true,
+      text: '折线图',
+      x: 'center', //水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+      y: 'top', //垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
+    },
+    toolbox: {
+      top: 0,
+      right: 30, // toolbox的定位位置
+    },
+    legend: {
+      top: 10,
+      right: 65,
+      padding: [0, 0, 0, 0],
+      itemGap: 30,
+      itemHeight: 3,
+      textStyle: {
+        color: '#000000',
+        fontSize: 12,
+      },
+    },
+    grid: {
+      bottom: 30,
+      top: 40,
+      left: 25,
+      right: 50,
+      // grid.left grid.right grid.top grid.bottom grid.width grid.height 决定的是包括了坐标轴标签在内的所有内容所形成的矩形的位置
+      // 常用于『防止标签溢出』的场景，标签溢出指的是，标签长度动态变化时，可能会溢出容器或者覆盖其他组件。
+      containLabel: true,
+    },
+    textStyle: {
+      fontSize: 14,
+    },
+    tooltip: {},
+    dataset: {},
+    xAxis: {
+      type: 'category',
+      axisLabel: {
+        width: 120,
+        hideOverlap: false,
+        interval: 0,
+        overflow: 'break',
+        rotate: '10',
+        align: 'center',
+        verticalAlign: 'top',
+      },
+    },
+  };
+});
+
+const params = computed(() => {
+  return {
+    showToolBox: true, // 显示工具栏
+    position: 'top', // 柱状图数字提示位置
+    isCross: false, // 柱状图是否为横向,
+  };
+});
+
+async function getData() {
+  try {
+    chartData.value = {
+      xAxis: [
+        '1月',
+        '2月',
+        '3月',
+        '4月',
+        '5月',
+        '6月',
+        '7月',
+        '8月',
+        '9月',
+        '10月',
+        '11月',
+        '12月',
+      ],
+      series: [
+        {
+          name: 2023,
+          data: [1.26, 1.13, 1.1, 1.09, 1.08, 1.09, 1.1, 1.11, 1.13, 1.14, 1.13, 1.14],
+        },
+        {
+          name: 2024,
+          data: [1.2, 1.28, 1.27, null, null, null, null, null, null, null, null, null],
+        },
+      ],
+      row: [
+        {
+          month: '2024-01',
+        },
+        {
+          month: '2024-02',
+        },
+        {
+          month: '2024-03',
+        },
+        {
+          month: '2023-04',
+        },
+        {
+          month: '2023-05',
+        },
+        {
+          month: '2023-06',
+        },
+        {
+          month: '2023-07',
+        },
+        {
+          month: '2023-08',
+        },
+        {
+          month: '2023-09',
+        },
+        {
+          month: '2023-10',
+        },
+        {
+          month: '2023-11',
+        },
+        {
+          month: '2023-12',
+        },
         ],
-        "series": [
-            {
-                "name": "平均申报",
-                "data": [
-                    3385,
-                    631.96,
-                    910.8,
-                    729.3,
-                    480.35,
-                ]
-            },
-            {
-                "name": "平均标准",
-                "data": [
-                    3007.13,
-                    825.79,
-                    782.65,
-                    594.35,
-                    567.49,
-                ]
-            }
-        ],
-        "row": [],
-        "msg": ""
-    }
+      msgTitle:'计算方法',
+      msg: '研发人效指数=单位时间内项目标准工时/单位时间内项目申报工时',
+    };
+  } catch (error) {
+    console.log('🚀 ~ getData ~ error:', error);
+  }
+}
+
+// 在组件挂载后获取数据
+onMounted(() => {
+  getData();
+});
 </script>

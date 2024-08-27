@@ -1,17 +1,19 @@
 <template>
   <div class="container">
-    <Tips v-if="showTips && props?.data?.msg" class="tips" :tips="props?.data?.msg" />
-    <Checkbox
-      v-if="showCheckbox"
-      class="checkbox"
-      :initChecked="checked"
-      @setShowLabel="handleShowLabel" />
+    <div class="tools">
+      <Tips v-if="showTips && props?.data?.msg" class="tips" :tips="props?.data?.msg" />
+      <Checkbox
+        v-if="showCheckbox"
+        class="checkbox"
+        :initChecked="checked"
+        @setShowLabel="handleShowLabel" />
+    </div>
     <div :id="id" :style="{ height: height, width: width }" ref="chartRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onBeforeUpdate, onMounted, defineProps } from 'vue';
+import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue';
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import {
@@ -39,6 +41,19 @@ echarts.use([
   MarkPointComponent,
 ]);
 
+const emit = defineEmits([
+  `chart-click`,
+  'chart-dblclick',
+  'chart-mousedown',
+  'chart-mousemove',
+  'chart-mouseup',
+  'chart-mouseover',
+  'chart-mouseout',
+  'chart-globalout',
+  'chart-contextmenu',
+  'chart-legendselectchanged',
+]);
+
 // 定义 props
 const props = defineProps<{
   id: string;
@@ -49,16 +64,17 @@ const props = defineProps<{
   className?: String;
   options?: Object;
   data?: Object;
-  loading?: Boolean;
   params?: Object;
+  loading?: Boolean;
 }>();
+
 const checked = ref(true);
 
 const chartOptions = computed(() => barOptions(props));
 
 // 定义一个 ref 用于 DOM 引用
 const chartRef = ref<HTMLElement | null>(null);
-const { chart } = useECharts(chartRef, chartOptions.value, props.data);
+const { chart } = useECharts(chartRef, chartOptions.value, props.data, emit);
 
 function handleShowLabel(newChecked: boolean) {
   checked.value = newChecked;
@@ -66,8 +82,6 @@ function handleShowLabel(newChecked: boolean) {
   chart.value.setOption(chartOptions.value);
 }
 
-// 生命周期钩子
-onMounted(() => {});
 onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
@@ -80,20 +94,22 @@ export default {
 <style lang="scss" scoped>
 .container {
   position: relative;
+  .tools {
+    display: flex;
+    justify-content: flex-end;
+    .tips {
+      z-index: 1000000000;
+      position: relative;
+      right: -2px;
+      top: 30px;
+    }
 
-  .tips {
-    z-index: 1000000000;
-    position: absolute;
-    right: 14px;
-    top: 6px;
-    width: 15px;
-  }
-
-  .checkbox {
-    z-index: 1000000000;
-    position: absolute;
-    right: -5px;
-    top: 0;
+    .checkbox {
+      z-index: 1000000000;
+      position: relative;
+      right: 0px;
+      top: 30px;
+    }
   }
 }
 </style>

@@ -40,25 +40,24 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>  
-.tips-container {  
-  .el-icon-s-opportunity {  
-    font-size: 18px;  
-    cursor: pointer;  
-    &:hover {  
-      color: #E6A23C;  
-    }  
-  }  
-}  
-  
-.content-container {  
-  padding: 0 10px 10px 10px;  
-  .divider {  
-    margin: 5px 0;  
-  }  
-  .content {  
-    white-space: pre-wrap;  
-    text-overflow: ellipsis;  
-  }  
-}  
+<style lang="scss" scoped>
+.tips-container {
+    width: 16px;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      color: orange;
+    }
+}
+
+.content-container {
+  padding: 0 10px 10px 10px;
+  .divider {
+    margin: 5px 0;
+  }
+  .content {
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+  }
+}
 </style>

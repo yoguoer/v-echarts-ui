@@ -1,19 +1,24 @@
 <template>
   <div class="container">
     <div class="tools">
-      <Tips v-if="showTips && props?.data?.msg" class="tips" :tips="props?.data?.msg" />
+      <Tips
+        v-if="showTips && props?.data?.msg"
+        class="tips"
+        :tips="props?.data?.msg"
+        :title="props?.data?.msgTitle" />
+      />
       <Checkbox
         v-if="showCheckbox"
         class="checkbox"
         :initChecked="checked"
         @setShowLabel="handleShowLabel" />
     </div>
-    <div :id="id" :style="{ height: height, width: width }" ref="barChartRef" />
+    <div :id="id" :class="className" :style="{ height: height, width: width }" ref="barChartRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue';
+import { ref, computed, onMounted, onBeforeUpdate, defineProps, defineEmits } from 'vue';
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import {
@@ -97,13 +102,22 @@ const props = defineProps({
     default: false,
   },
 });
-const checked = ref(true);
+
+const checked = ref(props?.showCheckbox);
 
 const chartOptions = computed(() => barOptions(props));
+const loading = ref(props?.loading);
 
 // 定义一个 ref 用于 DOM 引用
 const barChartRef = ref<HTMLElement | null>(null);
-const { chart } = useECharts(barChartRef, chartOptions.value, props.data, emit);
+const { chart } = useECharts(
+  barChartRef,
+  chartOptions.value,
+  props.data,
+  emit,
+  loading.value,
+  checked,
+);
 
 function handleShowLabel(newChecked: boolean) {
   checked.value = newChecked;
@@ -112,7 +126,11 @@ function handleShowLabel(newChecked: boolean) {
 }
 
 onBeforeUpdate(() => {
+  loading.value = false;
   chart.value.setOption(chartOptions.value);
+});
+onMounted(() => {
+  loading.value = false;
 });
 </script>
 <script lang="ts">
@@ -123,9 +141,11 @@ export default {
 <style lang="scss" scoped>
 .container {
   position: relative;
+
   .tools {
     display: flex;
     justify-content: flex-end;
+
     .tips {
       z-index: 1000000000;
       position: relative;

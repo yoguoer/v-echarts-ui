@@ -1,19 +1,23 @@
 <template>
   <div class="container">
     <div class="tools">
-      <Tips v-if="showTips && props?.data?.msg" class="tips" :tips="props?.data?.msg" :title="props?.data?.msgTitle"/>
+      <Tips
+        v-if="showTips && props?.data?.msg"
+        class="tips"
+        :tips="props?.data?.msg"
+        :title="props?.data?.msgTitle" />
       <Checkbox
         v-if="showCheckbox"
         class="checkbox"
         :initChecked="checked"
         @setShowLabel="handleShowLabel" />
     </div>
-    <div :id="id" :style="{ height: height, width: width }" ref="lineChartRef" />
+    <div :id="id" :class="className" :style="{ height: height, width: width }" ref="lineChartRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue';
+import { ref, computed, onBeforeUpdate, defineProps, defineEmits, onMounted } from 'vue';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import Tips from '../../Extend/Tips.vue';
@@ -100,13 +104,21 @@ const props = defineProps({
   },
 });
 
-const checked = ref(true);
+const checked = ref(props?.showCheckbox);
 
 const chartOptions = computed(() => lineOptions(props));
+const loading = ref(props?.loading);
 
 // 定义一个 ref 用于 DOM 引用
 const lineChartRef = ref<HTMLElement | null>(null);
-const { chart } = useECharts(lineChartRef, chartOptions.value, props.data, emit);
+const { chart } = useECharts(
+  lineChartRef,
+  chartOptions.value,
+  props.data,
+  emit,
+  loading.value,
+//   checked,
+);
 
 function handleShowLabel(newChecked: boolean) {
   checked.value = newChecked;
@@ -115,7 +127,11 @@ function handleShowLabel(newChecked: boolean) {
 }
 
 onBeforeUpdate(() => {
+  loading.value = false;
   chart.value.setOption(chartOptions.value);
+});
+onMounted(() => {
+    loading.value = false;
 });
 </script>
 <script lang="ts">

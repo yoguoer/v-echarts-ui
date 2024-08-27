@@ -19,6 +19,7 @@ import macarons from '../theme/trical.json'; // 假设这是你的自定义主�
 import { debounce } from '../utils';
 import { ref, watch, onMounted, onUnmounted, Ref, onActivated, onDeactivated } from 'vue';
 import { ECharts } from 'echarts/core';
+import { setShowLabel } from '../options/utils';
 
 echarts.use([
     // 注册所有图表公共组件
@@ -45,15 +46,16 @@ export function useECharts(
     data: any,
     emit: (event: string, ...args: any[]) => void,
     loading = false,
+    checked?:any
 ) {
     const chart = ref<ECharts | null>(null);
     let $_resizeHandler;
     let $_sidebarElm;
     
     onMounted(() => {
-        // initListener() // 初始化尺寸监听器
+        initListener() // 初始化尺寸监听器
         initCharts(chartRef) // 初始化 echart
-        // bindEvent()
+        bindEvent()
     });
 
     onUnmounted(() => {
@@ -75,10 +77,9 @@ export function useECharts(
     watch(
         data,
         (newVal) => {
-            if (chart.value) {
-                // chart.value.setOption(options, true); // 第二个参数为true表示不合并之前的option
-                setOption();
-            }
+            // setShowLabel(newVal, checked.value);
+            // chart.value.setOption(options, true); // 第二个参数为true表示不合并之前的option
+            setOption();
         },
         { deep: true, immediate: true },
     );
@@ -106,14 +107,6 @@ export function useECharts(
             // 设置图表选项
             // chart.value.setOption(options);
             options && chart.value && chart.value.setOption && chart.value.setOption(options)
-            if (loading) {
-                chart.value.showLoading({
-                    text: '正在加载...',
-                    maskColor: 'rgba(0, 0, 0,0)',
-                    color: 'rgb(255,255,255)',
-                    textColor: '#fff',
-                });
-            }
         }
     }
 

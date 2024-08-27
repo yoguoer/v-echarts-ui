@@ -8,17 +8,18 @@
     :showCheckbox="true"
     :showTips="true"
     :id="id"
-    :loading="false" />
+    :loading="loading" />
 </template>
 
 <script setup lang="ts">
 import vLine from '../../components/Line';
 import { computed, onMounted, ref } from 'vue';
 
-const id = 'bar';
+const id = 'Line';
 const chartData = ref();
 const width = '100%'; // 可选
 const height = '500px'; // 可选
+const loading = ref(true);
 
 const chartOptions = computed(() => {
   return {
@@ -75,8 +76,6 @@ const chartOptions = computed(() => {
 const params = computed(() => {
   return {
     showToolBox: true, // 显示工具栏
-    position: 'top', // 柱状图数字提示位置
-    isCross: false, // 柱状图是否为横向,
   };
 });
 
@@ -144,8 +143,8 @@ async function getData() {
         {
           month: '2023-12',
         },
-        ],
-      msgTitle:'计算方法',
+      ],
+      msgTitle: '计算方法',
       msg: '研发人效指数=单位时间内项目标准工时/单位时间内项目申报工时',
     };
   } catch (error) {

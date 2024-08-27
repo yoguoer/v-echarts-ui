@@ -8,17 +8,18 @@
     :showCheckbox="true"
     :showTips="true"
     :id="id"
-    :loading="false" />
+    :loading="loading" />
 </template>
 
 <script setup lang="ts">
 import vBar from '../../components/Bar';
 import { computed, onMounted, ref } from 'vue';
 
-const id = 'bar';
+const id = 'Bar';
 const chartData = ref();
 const width = '100%'; // 可选
 const height = '500px'; // 可选
+const loading = ref(true);
 
 const chartOptions = computed(() => {
   return {

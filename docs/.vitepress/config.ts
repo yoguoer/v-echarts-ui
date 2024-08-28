@@ -13,7 +13,7 @@ export default defineConfig({
       'link',
       {
         rel: 'icon',
-        href: '/img/vivien-logo.svg'
+        href: `/${docsSite}/favicon.ico`
       }
     ]
   ],

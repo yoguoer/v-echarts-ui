@@ -12,33 +12,49 @@ vue 版本为：3.4.31"
 
 ### 1. 安装 v-echarts
 
-```js [NPM]
+```bash
 # npm
 npm install v-echarts
 ```
 
-```js [Yarn]
+```bash
 # yarn
 yarn install v-echarts
 ```
 
-```js [PNPM]
+```bash
 # pnpm
 pnpm install v-echarts
 ```
 
 ### 2. 安装相关依赖
 
-```js [NPM]
+#### element-plus
+
+```bash
 npm install element-plus
 ```
 
-```js [Yarn]
+```bash
 yarn add element-plus
 ```
 
-```js [PNPM]
+```bash
 pnpm install element-plus
+```
+
+#### echarts
+
+```bash
+npm install echarts
+```
+
+```bash
+yarn add echarts
+```
+
+```bash
+pnpm install echarts
 ```
 
 ### 注意
@@ -53,19 +69,19 @@ v-echarts 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像
 
 1. 全局安装nrm包：
 
-   ```shell
+   ```bash
    npm install -g nrm
    ```
 
 2. 查看nrm的包源
 
-   ```shell
+   ```bash
    nrm ls // 查看当前npm的包源
    ```
 
 3. 添加 npm 镜像源，将你的 npm 私有仓库地址添加到 nrm:
 
-   ```shell
+   ```bash
    nrm add your-private-npm http://your-private-npm-domain/
    ```
 
@@ -73,19 +89,19 @@ v-echarts 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像
 
 4. 使用 nrm 切换成私有 npm 仓库：
 
-   ```shell
+   ```bash
    nrm use your-private-npm
    ```
 
-5. 安装以上步骤安装 XW-UI
+5. 安装以上步骤安装 v-echarts
 
-   ```shell
-   npm install xw-ui
+   ```bash
+   npm install  v-echarts
    ```
 
 6. 安装相关依赖
 
-   ```shell
+   ```bash
    # 切换镜像源到 npm 下载相关依赖
    nrm use npm
    # 安装相关依赖
@@ -93,32 +109,3 @@ v-echarts 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像
    ```
 
    
-
-## 快速开始
-
-::: danger 关于依赖库
-组件库打包时会对第三方包如 `element-plus` 、`vue` 进行 `externals` 处理，所以 v-echarts 源代码中没有将 Vue 相关代码打包。
-
-务必保证使用组件的项目中导入必须要的第三方库。
-:::
-
-
-
-v-echarts 的 Vue3 组件库是基于 [Element Plus](https://element-plus.org/zh-CN/guide/quickstart.html) 进行二次封装，因此在使用 v-echarts 之前，需要将 Element Plus 完整导入到你的项目。
-
-**完整导入 Element Plus**
-
-在 main.js 中写入以下内容：
-
-```javascript{3-4,9}
-// main.ts
-import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import App from './App.vue'
-
-const app = createApp(App)
-
-app.use(ElementPlus)
-app.mount('#app')
-```

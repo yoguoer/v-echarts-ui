@@ -20,7 +20,7 @@ hero:
   text: vue3图表组件
   tagline: Vue3 中基于echarts二次封装的图表组件文档
   image:
-    src: /img/avator.jpg
+    src: /img/v-echarts.png
     alt: v-echarts
   actions:
     - theme: brand

@@ -22,7 +22,10 @@
   },
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
-    "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/common-charts build"
+    "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/common-charts docs:build",
+    "build": "pnpm run build:common",
+    "build:common": "pnpm run -C packages/common-charts build",
+    "docs:deploy": "pnpm run build && pnpm run docs:build"
   },
   "keywords": [
     "v-echarts",

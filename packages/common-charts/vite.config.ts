@@ -44,7 +44,7 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
           vue: ['vue', 'vue-router'],
           'common-charts': ['common-charts'],
         },
-        external: ['common-charts', 'vue'] // 打包结果排除第三方包，不打包 'common-charts'和 'vue'
+        external: ['vue'] // 打包结果排除第三方包，不打包 'vue'
       },
       //库模式: https://cn.vitejs.dev/guide/build.html#library-mode
       lib: {//打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)

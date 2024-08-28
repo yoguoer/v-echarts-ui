@@ -3,7 +3,8 @@ export default [
         text: '指南',
         link: '/zh-CN/guide/howToUse'
     },
-    { text: '基础图表', link: '/zh-CN/components/common-charts/test/readme' },
+    { text: '基础图表', link: '/zh-CN/components/common-charts/组件总览' },
+    // { text: '测试', link: '/zh-CN/components/common-charts/test/readme' },
     // {
     //     text: '博客',
     //     items: [

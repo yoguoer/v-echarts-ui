@@ -13,7 +13,6 @@ export default {
     {
       text: '基础图表',
       items: [
-        // { text: '测试', link: '/zh-CN/components/common-charts/test/readme' },
         {
           text: '条形图',
           items: [

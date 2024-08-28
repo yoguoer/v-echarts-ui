@@ -5,6 +5,11 @@ export default [
       name: 'BarDemo'
     },
     {
+      path: '/Bar-stack-demo',
+      component: () => import('../../Bar/Bar-stack-demo.vue'),
+      name: 'BarStackDemo'
+    },
+    {
         path: '/Gauge-demo',
         component: () => import('../../Gauge/Gauge-demo.vue'),
         name: 'GaugeDemo'

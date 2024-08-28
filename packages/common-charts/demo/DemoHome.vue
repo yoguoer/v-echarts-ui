@@ -39,6 +39,7 @@ const menuList = reactive([
     children: [
       { title: "测试", name: "testDemo" },
       { title: "Bar条形图", name: "BarDemo" },
+      { title: "Bar条形图-堆叠", name: "BarStackDemo" },
       { title: "Line折线图", name: "LineDemo" },
       { title: "Pie饼图", name: "PieDemo" },
       { title: "Gauge仪表盘", name: "GaugeDemo" },

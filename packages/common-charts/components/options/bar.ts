@@ -51,7 +51,7 @@ class defaultOptTemp {
         itemHeight: 3,
         textStyle: {
           color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
-          fontSize: 16,
+          fontSize: 12,
         },
         show: true,
       },

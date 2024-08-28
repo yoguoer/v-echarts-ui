@@ -2,6 +2,7 @@ import { recursionObject, isObject } from '../utils/index.ts';
 import echart from '../theme/theme.json';
 import { getMarkLine, getTooltip, getToolBox, yAxis, axisLabel } from './common.ts';
 
+// 定义 itemStyle 类
 class itemStyle {
   normal: any; // 或更具体的类型
   constructor({ options, seriesItem }) {
@@ -31,6 +32,7 @@ class itemStyle {
   }
 }
 
+// 定义 defaultOptTemp 类
 class defaultOptTemp {
   option: any; // 或更具体的类型
   constructor({ options, data }) {
@@ -42,7 +44,11 @@ class defaultOptTemp {
       },
       tooltip: getTooltip(options),
       legend: {
-        bottom: 0,
+        top: 10,
+        right: 75,
+        padding: [0, 0, 0, 0],
+        itemGap: 30,
+        itemHeight: 3,
         textStyle: {
           color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
           fontSize: 16,
@@ -50,7 +56,13 @@ class defaultOptTemp {
         show: true,
       },
       grid: {
-        right: 30,
+        bottom: 30,
+        top: 40,
+        left: 25,
+        right: 50,
+        // grid.left grid.right grid.top grid.bottom grid.width grid.height 决定的是包括了坐标轴标签在内的所有内容所形成的矩形的位置
+        // 常用于『防止标签溢出』的场景，标签溢出指的是，标签长度动态变化时，可能会溢出容器或者覆盖其他组件。
+        containLabel: true,
       },
       dataset: (() => {
         if (options.dataset) {
@@ -77,7 +89,16 @@ class defaultOptTemp {
             color: '#E8E8E8',
           },
         },
-        axisLabel,
+        type: 'category',
+        axisLabel: {
+          width: 120,
+          hideOverlap: false,
+          interval: 0,
+          overflow: 'break',
+          rotate: '10',
+          align: 'center',
+          verticalAlign: 'top',
+        },
         axisLine: {
           lineStyle: {
             color: '#CCCCCC',
@@ -190,6 +211,7 @@ class defaultOptTemp {
   }
 }
 
+// 导出 barOptions 函数
 export function barOptions(props) {
   const { data } = props;
 

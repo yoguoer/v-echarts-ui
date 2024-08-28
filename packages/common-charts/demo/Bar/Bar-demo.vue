@@ -19,13 +19,13 @@ const id = 'Bar';
 const chartData = ref();
 const width = '100%'; // 可选
 const height = '500px'; // 可选
-const loading = ref(true);
-
+const loading = ref(true); // 可选
+// 可选，不传则使用默认Options
 const chartOptions = computed(() => {
   return {
     toolbox: {
       top: 0,
-      right: 30, // toolbox的定位位置
+      right: 45, // toolbox的定位位置
     },
     title: {
       show: true,
@@ -35,7 +35,7 @@ const chartOptions = computed(() => {
     },
     legend: {
       top: 10,
-      right: 65,
+      right: 75,
       padding: [0, 0, 0, 0],
       itemGap: 30,
       itemHeight: 3,

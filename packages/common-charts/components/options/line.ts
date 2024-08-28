@@ -8,6 +8,7 @@ import {
     axisLabel
 } from './common.ts'
 
+// 获取系列配置
 function getSeriesConfig({ seriesItem, options, params }) {
     return {
         type: 'line',
@@ -24,6 +25,7 @@ function getSeriesConfig({ seriesItem, options, params }) {
     }
 }
 
+// 默认配置
 class defaultOpt {
     option: any; // 或更具体的类型
     constructor(lineParams) {
@@ -69,6 +71,7 @@ class defaultOpt {
     }
 }
 
+// 获取线图配置
 export function lineOptions(props) {
     const { data } = props
     /* eslint-disable */

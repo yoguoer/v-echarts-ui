@@ -148,14 +148,14 @@ export default {
     .tips {
       z-index: 1000000000;
       position: relative;
-      right: -2px;
+      right: 15px;
       top: 30px;
     }
 
     .checkbox {
       z-index: 1000000000;
       position: relative;
-      right: 0px;
+      right: 10px;
       top: 30px;
     }
   }

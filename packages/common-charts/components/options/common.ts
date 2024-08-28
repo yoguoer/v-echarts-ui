@@ -1,5 +1,6 @@
 import echart from '../theme/theme.json'
 import { sumArray } from '../utils/index.ts'
+let change = false
 /**
  * 柱状图平均值线配置
  * */

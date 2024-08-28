@@ -7,7 +7,7 @@
       trigger="hover"
       :title="title || '计算公式'">
       <template #reference>
-        <Opportunity />
+        <Opportunity></Opportunity>
       </template>
       <div class="content-container">
         <el-divider class="divider" />
@@ -42,7 +42,7 @@ export default {
 <style lang="scss" scoped>
 .tips-container {
   width: 16px;
-  margin: 5px;
+  margin: 5px 0px;
   cursor: pointer;
   &:hover {
     color: orange;

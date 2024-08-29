@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name:="Bar">
 import { ref, computed, onMounted, onBeforeUpdate, defineProps, defineEmits } from 'vue';
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
@@ -94,7 +94,7 @@ const props = defineProps({
   },
   params: {
     type: Object,
-    dfault: () => ({}),
+    default: () => ({}),
   },
   loading: {
     type: Boolean,
@@ -132,11 +132,7 @@ onMounted(() => {
   loading.value = false;
 });
 </script>
-<script lang="ts">
-export default {
-  name: 'Bar',
-};
-</script>
+
 <style lang="scss" scoped>
 .container {
   position: relative;

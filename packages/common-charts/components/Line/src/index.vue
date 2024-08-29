@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Line">
 import { ref, computed, onBeforeUpdate, defineProps, defineEmits, onMounted } from 'vue';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
@@ -25,7 +25,6 @@ import Checkbox from '../../Extend/Checkbox.vue';
 import { lineOptions } from '../../options/line';
 import { setShowLabel } from '../../options/utils';
 import { useECharts } from '../../mixins/common';
-
 import {
   TitleComponent,
   ToolboxComponent,
@@ -96,7 +95,7 @@ const props = defineProps({
   },
   params: {
     type: Object,
-    dfault: () => ({}),
+    default: () => ({}),
   },
   loading: {
     type: Boolean,
@@ -117,7 +116,7 @@ const { chart } = useECharts(
   props.data,
   emit,
   loading.value,
-//   checked,
+  //   checked,
 );
 
 function handleShowLabel(newChecked: boolean) {
@@ -131,14 +130,10 @@ onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
 onMounted(() => {
-    loading.value = false;
+  loading.value = false;
 });
 </script>
-<script lang="ts">
-export default {
-  name: 'Line',
-};
-</script>
+
 <style lang="scss" scoped>
 .container {
   position: relative;

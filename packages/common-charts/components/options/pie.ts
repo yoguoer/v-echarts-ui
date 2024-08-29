@@ -1,6 +1,89 @@
-import { recursionObject, isArray } from  '../utils/index.ts'
-import { getToolBox } from './common.ts'
-import echart from '../theme/theme.json'
+import { recursionObject, isArray } from '../utils/index.ts';
+import { getToolBox } from './common.ts';
+import echart from '../theme/theme.json';
+
+// 获取系列配置
+function getSeriesConfig(pieParams) {
+  // 如果指定了嵌套饼图（isNested.show 为真），则生成两个饼图的配置：内层饼图和外层饼图
+  if (pieParams?.isNested?.show) {
+    const firstSecond = {
+      name: pieParams.isNested.firstSecond.name,
+      type: 'pie',
+      radius: [0, 70],
+      minShowLabelAngle: 1,
+      selectedMode: 'single',
+      // roseType: 'radius',
+      encode: {
+        itemName: pieParams.isNested.firstSecond.itemName,
+        value: pieParams.isNested.firstSecond.value,
+      },
+      label: {
+        color: '#00FFF7',
+      },
+      labelLine: {
+        show: true,
+        length: 4,
+      },
+    };
+    const seriesSecond = {
+      name: pieParams.isNested.seriesSecond.name,
+      type: 'pie',
+      radius: [90, 150],
+      minShowLabelAngle: 1,
+      selectedMode: 'single',
+      // roseType: 'radius',
+      encode: {
+        itemName: pieParams.isNested.seriesSecond.itemName,
+        value: pieParams.isNested.seriesSecond.value,
+      },
+      label: {
+        color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
+      },
+
+      labelLine: {
+        show: true,
+        length: 4,
+      },
+    };
+    const newSeries = [firstSecond, seriesSecond];
+    return newSeries;
+  } else { // 如果没有指定嵌套饼图，则生成一个标准的饼图配置
+    return [
+      {
+        name: '',
+        type: 'pie',
+        selectedMode: 'single',
+        data: [],
+        radius: ['0%', '60%'],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+          },
+        },
+        label: {
+          overflow: 'breakAll', // 文字超出宽度是否截断或者换行
+          color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
+          textStyle: {
+            color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
+            fontSize: 16,
+          },
+          formatter: function (params) {
+            return params.name + '\n' + params.percent + '%';
+          },
+        },
+        labelLine: {
+          show: true,
+          length: 15,
+          length2: 5,
+          smooth: true,
+          minTurnAngle: 135,
+        },
+        center: ['50%', '50%'],
+      },
+    ];
+  }
+}
 
 /**
  * 获取默认配置参数
@@ -14,115 +97,41 @@ import echart from '../theme/theme.json'
  * }
  */
 class defaultOpt {
+  option: any; // 或更具体的类型
   constructor(pieParams) {
-    this.options = {
+    this.option = {
       toolbox: getToolBox(pieParams),
       title: {
-        text: ''
+        text: '',
       },
       tooltip: {
         trigger: 'item',
-        formatter: function(params) {
-          return `${params.marker}${params.name}: ${
-            params.value
-          } (${pieParams.unit || 'h'})`
-        }
+        formatter: function (params) {
+          return `${params.marker}${params.name}: ${params.value} (${pieParams.unit || 'h'})`;
+        },
       },
       legend: {
         show: pieParams.showLegend,
-        bottom: 0
+        bottom: 0,
       },
       dataset: {
         dimensions: [],
-        source: []
+        source: [],
       },
-      series: [
-        {
-          name: '',
-          type: 'pie',
-          selectedMode: 'single',
-          data: [],
-          radius: ['0%', '60%'],
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowOffsetX: 0
-            }
-          },
-          label: {
-            overflow: 'breakAll', // 文字超出宽度是否截断或者换行
-            color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
-            textStyle: {
-              color: echart.$fontColor || echart.fontColor, // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
-              fontSize: 16
-            },
-            formatter: function(params) {
-              return params.name + '\n' + params.percent + '%'
-            }
-          },
-          labelLine: {
-            show: true,
-            length: 15,
-            length2: 5,
-            smooth: true,
-            minTurnAngle: 135
-          },
-          center: ['50%', '50%']
-        }
-      ]
-    }
-    if (pieParams?.isNested?.show) {
-      const firstSecond = {
-        name: pieParams.isNested.firstSecond.name,
-        type: 'pie',
-        radius: [0, 70],
-        minShowLabelAngle: 1,
-        selectedMode: 'single',
-        // roseType: 'radius',
-        encode: {
-          itemName: pieParams.isNested.firstSecond.itemName,
-          value: pieParams.isNested.firstSecond.value
-        },
-        label: {
-          color: '#00FFF7'
-        },
-        labelLine: {
-          show: true,
-          length: 4
-        }
-      }
-      const seriesSecond = {
-        name: pieParams.isNested.seriesSecond.name,
-        type: 'pie',
-        radius: [90, 150],
-        minShowLabelAngle: 1,
-        selectedMode: 'single',
-        // roseType: 'radius',
-        encode: {
-          itemName: pieParams.isNested.seriesSecond.itemName,
-          value: pieParams.isNested.seriesSecond.value
-        },
-        label: {
-          color: echart.$fontColor || echart.fontColor // 注意: mac 中无法获取 $变量, mac中直接通过变量名获取
-        },
-
-        labelLine: {
-          show: true,
-          length: 4
-        }
-      }
-      const newSeries = [firstSecond, seriesSecond]
-      this.options.series = newSeries
-    }
+      series: getSeriesConfig(pieParams),
+    };
   }
 }
-export function pieOptions(vue) {
-  const { data = null } = vue._props
-  /* eslint-disable */
-  const getDefaultOpt = new defaultOpt(vue._props.params).options;
-  const opt = recursionObject({}, getDefaultOpt, vue._props.options);
 
-  if (vue._props.params.dataset && data.length > 1) {
+// 导出 pieOptions 函数，用于生成饼图配置项
+export function pieOptions(props) {
+  console.log("🚀 ~ pieOptions ~ props:", props)
+  const { data = null } = props;
+
+  const getDefaultOpt = new defaultOpt(props.params).option;
+  const opt = recursionObject({}, getDefaultOpt, props.options);
+
+  if (props.params.dataset && data.length > 1) {
     opt.dataset.source = data.reverse();
     opt.dataset.dimensions = Object.keys(data[0]);
   }
@@ -137,6 +146,5 @@ export function pieOptions(vue) {
       });
     }
   }
-
   return opt;
 }

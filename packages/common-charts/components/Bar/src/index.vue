@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name:="Bar">
+<script setup lang="ts" name="Bar">
 import { ref, computed, onMounted, onBeforeUpdate, defineProps, defineEmits } from 'vue';
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
@@ -32,7 +32,7 @@ import Tips from '../../Extend/Tips.vue';
 import Checkbox from '../../Extend/Checkbox.vue';
 import { barOptions } from '../../options/bar';
 import { setShowLabel } from '../../options/utils';
-import { useECharts } from '../../mixins/common';
+import { useEcharts } from '../../mixins/common';
 
 // 注册必须的 echarts 组件
 echarts.use([
@@ -109,7 +109,7 @@ const loading = ref(props?.loading);
 
 // 定义一个 ref 用于 DOM 引用
 const barChartRef = ref<HTMLElement | null>(null);
-const { chart } = useECharts(
+const { chart } = useEcharts(
   barChartRef,
   chartOptions.value,
   props.data,

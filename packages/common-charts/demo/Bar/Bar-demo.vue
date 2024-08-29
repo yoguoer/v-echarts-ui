@@ -2,7 +2,7 @@
   <vBar
     :data="chartData"
     :options="chartOptions"
-    :params="params"
+    :params="chartParams"
     :height="height"
     :width="width"
     :showCheckbox="true"
@@ -11,12 +11,12 @@
     :loading="loading" />
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="BarDemo">
 import vBar from '../../components/Bar';
 import { computed, onMounted, ref } from 'vue';
 
-const id = 'Bar';
-const chartData = ref();
+const id = 'BarDemo';
+const chartData = ref({});
 const width = '100%'; // 可选
 const height = '500px'; // 可选
 const loading = ref(true); // 可选
@@ -73,7 +73,7 @@ const chartOptions = computed(() => {
   };
 });
 
-const params = computed(() => {
+const chartParams = computed(() => {
   return {
     showToolBox: true, // 显示工具栏
     position: 'top', // 柱状图数字提示位置

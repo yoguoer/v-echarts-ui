@@ -40,7 +40,7 @@ echarts.use([
 echarts.use([CanvasRenderer]); // 确保在组件中使用前注册渲染器
 echarts.registerTheme('macarons', macarons); // 颜色主题
 
-export function useECharts(
+export function useEcharts(
   chartRef: Ref<HTMLElement | null>,
   options: any,
   data: any,

@@ -1,7 +1,7 @@
 <template>
   <vBar
     :data="chartData"
-    :params="params"
+    :params="chartParams"
     :height="height"
     :width="width"
     :showCheckbox="true"
@@ -9,19 +9,19 @@
     :loading="loading" />
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="BarStackDemo">
 import vBar from '../../components/Bar';
 import { computed, onMounted, ref } from 'vue';
 
-const id = 'BarStack';
-const chartData = ref();
+const id = 'BarStackDemo';
+const chartData = ref({});
 const width = '100%'; // 可选
 const height = '400px'; // 可选
 const loading = ref(true); // 可选
 // 可选，不传则使用默认Options
 // const chartOptions = computed(() => {});
 
-const params = computed(() => {
+const chartParams = computed(() => {
   return {
     showToolBox: true, 
     isCross: false,

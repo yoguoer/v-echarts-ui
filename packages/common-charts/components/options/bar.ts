@@ -32,7 +32,19 @@ class itemStyle {
   }
 }
 
-// 定义 defaultOptTemp 类
+/**
+ * 获取条形图默认配置参数
+ * @param { Object } options 实例配置参数：
+ * {
+ *      position: 'top', // 柱状图数字提示位置
+ *      isCross: false, // 柱状图是否为横向,
+ *      stackIndex: [1, 2], // 堆叠图形下标值
+ *      stackLabel: ['label1','label1','label2','label2'] //堆叠图形 label ，相同 label 的图形堆叠在一起
+ *      dataset: false, //源数据是否为 dataset 格式
+ *      showAverage: true // 是否显示平均线
+ * }
+  * @param { Object } data 源数据
+ */
 class defaultOptTemp {
   option: any; // 或更具体的类型
   constructor({ options, data }) {
@@ -211,7 +223,7 @@ class defaultOptTemp {
   }
 }
 
-// 导出 barOptions 函数
+// 导出 barOptions 函数，用于生成 bar 图的配置项
 export function barOptions(props) {
   const { data } = props;
 

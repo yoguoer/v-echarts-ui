@@ -24,7 +24,7 @@ import Tips from '../../Extend/Tips.vue';
 import Checkbox from '../../Extend/Checkbox.vue';
 import { lineOptions } from '../../options/line';
 import { setShowLabel } from '../../options/utils';
-import { useECharts } from '../../mixins/common';
+import { useEcharts } from '../../mixins/common';
 import {
   TitleComponent,
   ToolboxComponent,
@@ -110,7 +110,7 @@ const loading = ref(props?.loading);
 
 // 定义一个 ref 用于 DOM 引用
 const lineChartRef = ref<HTMLElement | null>(null);
-const { chart } = useECharts(
+const { chart } = useEcharts(
   lineChartRef,
   chartOptions.value,
   props.data,

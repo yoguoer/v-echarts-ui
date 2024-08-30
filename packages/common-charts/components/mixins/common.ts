@@ -56,14 +56,11 @@ export function useEcharts(
     initListener(); // 初始化尺寸监听器
     initCharts(chartRef); // 初始化 echart
     bindEvent();
+    loading = false;
   });
 
   onUnmounted(() => {
     destroyListener(); // 销毁尺寸监听器
-    destroyChartInst(); // 销毁 echart
-  });
-
-  onDeactivated(() => {
     destroyChartInst(); // 销毁 echart
   });
 
@@ -72,6 +69,10 @@ export function useEcharts(
       initListener();
     }
     resize();
+  });
+
+  onDeactivated(() => {
+    destroyChartInst(); // 销毁 echart
   });
 
   watch(

@@ -125,7 +125,6 @@ class defaultOpt {
 
 // 导出 pieOptions 函数，用于生成饼图配置项
 export function pieOptions(props) {
-  console.log("🚀 ~ pieOptions ~ props:", props)
   const { data = null } = props;
 
   const getDefaultOpt = new defaultOpt(props.params).option;

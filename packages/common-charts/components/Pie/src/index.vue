@@ -1,17 +1,6 @@
 <template>
   <div class="container">
-    <div class="tools">
-      <Tips
-        v-if="showTips && props?.data?.msg"
-        class="tips"
-        :tips="props?.data?.msg"
-        :title="props?.data?.msgTitle" />
-              <Checkbox
-        v-if="showCheckbox"
-        class="checkbox"
-        :initChecked="checked"
-        @setShowLabel="handleShowLabel" />
-    </div>
+    <Tools :showTips="showTips" :showCheckbox="showCheckbox" @setShowLabel="handleShowLabel" />
     <div :id="id" :class="className" :style="{ height: height, width: width }" ref="pieChartRef" />
   </div>
 </template>
@@ -21,10 +10,9 @@ import { ref, computed, onBeforeUpdate, defineProps, defineEmits, onMounted } fr
 import * as echarts from 'echarts/core';
 import { PieChart } from 'echarts/charts';
 import { pieOptions } from '../../options/pie';
-import Tips from '../../Extend/Tips.vue';
-import Checkbox from '../../Extend/Checkbox.vue';
 import { setShowLabel } from '../../options/utils';
 import { useEcharts } from '../../mixins/common';
+import Tools from '../../Extend/index.vue';
 
 echarts.use([PieChart]);
 
@@ -41,7 +29,6 @@ const emit = defineEmits([
   'chart-legendselectchanged',
 ]);
 
-// 定义 props
 const props = defineProps({
   id: {
     type: String,
@@ -54,8 +41,8 @@ const props = defineProps({
   width: {
     type: String,
     default: '100%',
-    },
-    showCheckbox: {
+  },
+  showCheckbox: {
     type: Boolean,
     default: true,
   },
@@ -73,7 +60,7 @@ const props = defineProps({
   },
   data: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   params: {
     type: Object,
@@ -85,55 +72,23 @@ const props = defineProps({
   },
 });
 
-const checked = ref(props?.showCheckbox);
-
 const chartOptions = computed(() => pieOptions(props));
-const loading = ref(props?.loading);
 
 // 定义一个 ref 用于 DOM 引用
 const pieChartRef = ref<HTMLElement | null>(null);
-const { chart } = useEcharts(
-  pieChartRef,
-  chartOptions.value,
-  props.data,
-  emit,
-  loading.value,
-  // checked,
-);
+const { chart } = useEcharts(pieChartRef, chartOptions.value, props.data, emit, props.loading);
 
 function handleShowLabel(newChecked: boolean) {
-  checked.value = newChecked;
   setShowLabel(chartOptions.value, newChecked);
   chart.value.setOption(chartOptions.value);
 }
 
 onBeforeUpdate(() => {
-  loading.value = false;
   chart.value.setOption(chartOptions.value);
-});
-onMounted(() => {
-  loading.value = false;
 });
 </script>
 <style lang="scss" scoped>
 .container {
   position: relative;
-  .tools {
-    display: flex;
-    justify-content: flex-end;
-    .tips {
-      z-index: 1000000000;
-      position: relative;
-      right: 15px;
-      top: 30px;
-    }
-
-    .checkbox {
-      z-index: 1000000000;
-      position: relative;
-      right: 10px;
-      top: 30px;
-    }
-  }
 }
 </style>

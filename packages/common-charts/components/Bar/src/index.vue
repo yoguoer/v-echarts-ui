@@ -1,23 +1,16 @@
 <template>
   <div class="container">
-    <div class="tools">
-      <Tips
-        v-if="showTips && props?.data?.msg"
-        class="tips"
-        :tips="props?.data?.msg"
-        :title="props?.data?.msgTitle" />
-      <Checkbox
-        v-if="showCheckbox"
-        class="checkbox"
-        :initChecked="checked"
-        @setShowLabel="handleShowLabel" />
-    </div>
+    <Tools
+      :showTips="showTips"
+      :showCheckbox="showCheckbox"
+      @setShowLabel="handleShowLabel"
+      :data="props?.data" />
     <div :id="id" :class="className" :style="{ height: height, width: width }" ref="barChartRef" />
   </div>
 </template>
 
 <script setup lang="ts" name="Bar">
-import { ref, computed, onMounted, onBeforeUpdate, defineProps, defineEmits } from 'vue';
+import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue';
 import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import {
@@ -28,13 +21,11 @@ import {
   MarkLineComponent,
   MarkPointComponent,
 } from 'echarts/components';
-import Tips from '../../Extend/Tips.vue';
-import Checkbox from '../../Extend/Checkbox.vue';
 import { barOptions } from '../../options/bar';
 import { setShowLabel } from '../../options/utils';
 import { useEcharts } from '../../mixins/common';
+import Tools from '../../Extend/index.vue';
 
-// 注册必须的 echarts 组件
 echarts.use([
   BarChart,
   GridComponent,
@@ -58,7 +49,6 @@ const emit = defineEmits([
   'chart-legendselectchanged',
 ]);
 
-// 定义 props
 const props = defineProps({
   id: {
     type: String,
@@ -102,58 +92,24 @@ const props = defineProps({
   },
 });
 
-const checked = ref(props?.showCheckbox);
-
 const chartOptions = computed(() => barOptions(props));
-const loading = ref(props?.loading);
 
 // 定义一个 ref 用于 DOM 引用
 const barChartRef = ref<HTMLElement | null>(null);
-const { chart } = useEcharts(
-  barChartRef,
-  chartOptions.value,
-  props.data,
-  emit,
-  loading.value,
-  checked,
-);
+const { chart } = useEcharts(barChartRef, chartOptions.value, props.data, emit, props.loading);
 
 function handleShowLabel(newChecked: boolean) {
-  checked.value = newChecked;
   setShowLabel(chartOptions.value, newChecked);
   chart.value.setOption(chartOptions.value);
 }
 
 onBeforeUpdate(() => {
-  loading.value = false;
   chart.value.setOption(chartOptions.value);
-});
-onMounted(() => {
-  loading.value = false;
 });
 </script>
 
 <style lang="scss" scoped>
 .container {
   position: relative;
-
-  .tools {
-    display: flex;
-    justify-content: flex-end;
-
-    .tips {
-      z-index: 1000000000;
-      position: relative;
-      right: 15px;
-      top: 30px;
-    }
-
-    .checkbox {
-      z-index: 1000000000;
-      position: relative;
-      right: 10px;
-      top: 30px;
-    }
-  }
 }
 </style>

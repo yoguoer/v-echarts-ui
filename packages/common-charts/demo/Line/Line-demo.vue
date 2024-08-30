@@ -6,7 +6,7 @@
     :height="height"
     :width="width"
     :showCheckbox="true"
-    :showTips="true"
+    :showTips="false"
     :id="id"
     :loading="loading" />
 </template>

@@ -12,7 +12,8 @@ import { LineChart } from 'echarts/charts';
 import Tools from '../../Extend/index.vue';
 import { lineOptions } from '../../options/line';
 import { setShowLabel } from '../../options/utils';
-import { useEcharts } from '../../mixins/common';
+import { useEcharts } from '../../mixins/useEcharts';
+import { emitEvents } from '../../mixins/emitEvents';
 import {
   TitleComponent,
   ToolboxComponent,
@@ -34,18 +35,7 @@ echarts.use([
   LineChart,
 ]);
 
-const emit = defineEmits([
-  `chart-click`,
-  'chart-dblclick',
-  'chart-mousedown',
-  'chart-mousemove',
-  'chart-mouseup',
-  'chart-mouseover',
-  'chart-mouseout',
-  'chart-globalout',
-  'chart-contextmenu',
-  'chart-legendselectchanged',
-]);
+const emit = defineEmits(emitEvents);
 
 const props = defineProps({
   id: {
@@ -94,13 +84,7 @@ const chartOptions = computed(() => lineOptions(props));
 
 // 定义一个 ref 用于 DOM 引用
 const lineChartRef = ref<HTMLElement | null>(null);
-const { chart } = useEcharts(
-  lineChartRef,
-  chartOptions.value,
-  props.data,
-  emit,
-  props.loading,
-);
+const { chart } = useEcharts(lineChartRef, chartOptions.value, props.data, emit, props.loading);
 
 function handleShowLabel(newChecked: boolean) {
   setShowLabel(chartOptions.value, newChecked);
@@ -110,7 +94,6 @@ function handleShowLabel(newChecked: boolean) {
 onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
-
 </script>
 
 <style lang="scss" scoped>

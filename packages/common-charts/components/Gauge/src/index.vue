@@ -1,148 +1,83 @@
 <template>
-  <div class="guage-container" :style="{ height: height+'px', width: width+'px' }">
-    <div v-if="title" class="title">{{ title }}</div>
-    <div :id="id" :style="{ height: height+'px', width: width+'px' }" />
+  <div class="container">
+    <div
+      :id="id"
+      :class="className"
+      :style="{ height: height, width: width }"
+      ref="gaugeChartRef" />
     <slot name="content" />
   </div>
 </template>
 
-<script>
-import * as echarts from 'echarts/core'
-import {
-  TooltipComponent,
-  TitleComponent,
-  PolarComponent
-} from 'echarts/components'
-import { GaugeChart, BarChart } from 'echarts/charts'
-import { CanvasRenderer } from 'echarts/renderers'
-import { getDefaultOptions } from '../../options/guage.ts'
-// import common from '../../mixins/common.ts'
+<script setup lang="ts" name:="Gauge">
+import { ref, computed, defineProps, defineEmits, onBeforeUpdate } from 'vue';
+import * as echarts from 'echarts/core';
+import { TooltipComponent, TitleComponent, PolarComponent } from 'echarts/components';
+import { GaugeChart, BarChart } from 'echarts/charts';
+import { guageOptions } from '../../options/guage';
+import { useEcharts } from '../../mixins/useEcharts';
+import { emitEvents } from '../../mixins/emitEvents';
 
-export default {
-  name: 'Gauge',
-//   mixins: [common],
-  props: {
-    id: {
-      type: String,
-      default: 'GuageChart',
-      require: true
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    options: {
-      type: Object,
-      default: null
-    },
-    width: {
-      type: Number,
-      default: 88
-    },
-    height: {
-      type: Number,
-      default: 88
-    },
-    autoResize: {
-      type: Boolean,
-      default: true
-    },
-    data: {
-      type: Array,
-      default: function() {
-        return null
-      }
-    },
-    color: {
-      type: String,
-      default: '#409EFF'
-    },
-    status: {
-      type: String,
-      default: '良好'
-    },
-    rate: {
-      type: Number,
-      default: null
-    },
-    dataFormat: {
-      type: Function,
-      default: null
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      chart: null,
-      resizeHandler: null,
-      dataStas: [0, 0]
-    }
-  },
-  computed: {
-    charRate() {
-      return this.rate
-    },
-    defaultOptions() {
-      return this.options || getDefaultOptions({
-        width: this.width,
-        color: this.color,
-        dataFormat: this.dataFormat,
-        dataStas: this.dataStas,
-        charRate: this.charRate,
-        status: this.status,
-        showToolbox: this.params?.showToolbox // 通过 mixin 进入的变量
-      })
-    }
-  },
-  watch: {
-    data(newValue) {
-      if (!newValue) return
-      this.dataStas = newValue
-      this.setOption()
-    },
-    loading(status) {
-      if (!this.chart) return
-      status ? this.chart.showLoading() : this.chart.hideLoading()
-    }
-  },
-  beforeCreate() {
-    echarts.use([
-      TooltipComponent,
-      TitleComponent,
-      PolarComponent,
-      GaugeChart,
-      BarChart,
-      CanvasRenderer
-    ])
-  },
-  mounted() {
-    this.chart = echarts.init(document.getElementById(this.id))
-    this.setOption()
-  },
+echarts.use([TooltipComponent, TitleComponent, PolarComponent, GaugeChart, BarChart]);
 
-  methods: {
-    setOption() {
-      if (!this.chart) return
-      this.chart.clear()
-      this.defaultOptions && this.chart.setOption(this.defaultOptions)
-    }
-  }
-}
+const emit = defineEmits(emitEvents);
+
+const props = defineProps({
+  id: {
+    type: String,
+    default: 'GuageChart',
+    require: true,
+  },
+  height: {
+    type: String,
+    default: '300px',
+  },
+  width: {
+    type: String,
+    default: '300px',
+  },
+  dataFormat: {
+    type: Function,
+    default: null,
+  },
+  className: {
+    type: String,
+    default: null,
+  },
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
+  data: {
+    type: Array,
+    default: () => [],
+  },
+  params: {
+    type: Object,
+    default: () => ({}),
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const chartOptions = computed(() => guageOptions(props));
+
+// 定义一个 ref 用于 DOM 引用
+const gaugeChartRef = ref<HTMLElement | null>(null);
+const { chart } = useEcharts(gaugeChartRef, chartOptions.value, props.data, emit, props.loading);
+// console.log('🚀 ~ chart:', chart);
+
+onBeforeUpdate(() => {
+  chart.value.setOption(chartOptions.value);
+});
 </script>
 <style lang="scss" scoped>
-.guage-container {
-  margin: 0 auto;
+.container {
   position: relative;
-  .title {
-    font-size: 12px;
-    text-align: center;
-    color: #909399;
-    margin: 5px 0;
-  }
-  &::deep canvas{
+
+  &::deep canvas {
     cursor: pointer;
   }
 }

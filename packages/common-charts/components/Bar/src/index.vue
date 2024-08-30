@@ -23,7 +23,8 @@ import {
 } from 'echarts/components';
 import { barOptions } from '../../options/bar';
 import { setShowLabel } from '../../options/utils';
-import { useEcharts } from '../../mixins/common';
+import { useEcharts } from '../../mixins/useEcharts';
+import { emitEvents } from '../../mixins/emitEvents';
 import Tools from '../../Extend/index.vue';
 
 echarts.use([
@@ -36,18 +37,7 @@ echarts.use([
   MarkPointComponent,
 ]);
 
-const emit = defineEmits([
-  `chart-click`,
-  'chart-dblclick',
-  'chart-mousedown',
-  'chart-mousemove',
-  'chart-mouseup',
-  'chart-mouseover',
-  'chart-mouseout',
-  'chart-globalout',
-  'chart-contextmenu',
-  'chart-legendselectchanged',
-]);
+const emit = defineEmits(emitEvents);
 
 const props = defineProps({
   id: {

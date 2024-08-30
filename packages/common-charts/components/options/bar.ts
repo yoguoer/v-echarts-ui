@@ -43,7 +43,7 @@ class itemStyle {
  *      dataset: false, //源数据是否为 dataset 格式
  *      showAverage: true // 是否显示平均线
  * }
-  * @param { Object } data 源数据
+ * @param { Object } data 源数据
  */
 class defaultOptTemp {
   option: any; // 或更具体的类型

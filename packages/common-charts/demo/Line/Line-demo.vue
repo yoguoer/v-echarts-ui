@@ -15,8 +15,8 @@
 import vLine from '../../components/Line';
 import { computed, onMounted, ref } from 'vue';
 
-const id = 'LineDemo'; 
-const chartData = ref({}); 
+const id = 'LineDemo';
+const chartData = ref({});
 const width = '100%'; // 可选
 const height = '500px'; // 可选
 const loading = ref(true); // 可选

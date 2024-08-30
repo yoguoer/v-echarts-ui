@@ -81,7 +81,7 @@ class defaultOpt {
 // 导出 lineOptions 函数，用于生成 line 图表的配置项
 export function lineOptions(props) {
   const { data } = props;
- 
+
   const getDefaultOpt = new defaultOpt(props.params).option;
   const opt = recursionObject({}, getDefaultOpt, props.options);
   //使用数据集处理

@@ -23,7 +23,7 @@ const loading = ref(true); // 可选
 
 const chartParams = computed(() => {
   return {
-    showToolBox: true, 
+    showToolBox: true,
     isCross: false,
     stackLabel: ['none', 'apply', 'apply', 'standard'], // 效果同 stackIndex: [1,2]
     dataset: false,
@@ -34,25 +34,25 @@ const chartParams = computed(() => {
 async function getData() {
   try {
     chartData.value = {
-        xAxis: ['管理室', '数字化室'],
-        series: [
-          {
-            name: '打卡工时',
-            data: [220, 430],
-          },
-          {
-            name: '项目工时',
-            data: [80, 247],
-          },
-          {
-            name: '平台工时',
-            data: [144, 20],
-          },
-          {
-            name: '标准工时',
-            data: [18, 17.64],
-          },
-        ],
+      xAxis: ['管理室', '数字化室'],
+      series: [
+        {
+          name: '打卡工时',
+          data: [220, 430],
+        },
+        {
+          name: '项目工时',
+          data: [80, 247],
+        },
+        {
+          name: '平台工时',
+          data: [144, 20],
+        },
+        {
+          name: '标准工时',
+          data: [18, 17.64],
+        },
+      ],
     };
   } catch (error) {
     console.log('🚀 ~ getData ~ error:', error);

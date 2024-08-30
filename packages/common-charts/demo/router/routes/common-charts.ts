@@ -10,11 +10,6 @@ export default [
     name: 'BarStackDemo',
   },
   {
-    path: '/Gauge-demo',
-    component: () => import('../../Gauge/Gauge-demo.vue'),
-    name: 'GaugeDemo',
-  },
-  {
     path: '/Line-demo',
     component: () => import('../../Line/Line-demo.vue'),
     name: 'LineDemo',
@@ -23,5 +18,15 @@ export default [
     path: '/Pie-demo',
     component: () => import('../../Pie/Pie-demo.vue'),
     name: 'PieDemo',
+  },
+  {
+    path: '/Gauge-demo',
+    component: () => import('../../Gauge/Gauge-demo.vue'),
+    name: 'GaugeDemo',
+  },
+  {
+    path: '/Gauge-custom-demo',
+    component: () => import('../../Gauge/Gauge-custom-demo.vue'),
+    name: 'GaugeCustomDemo',
   },
 ];

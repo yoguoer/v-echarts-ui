@@ -19,7 +19,6 @@ import macarons from '../theme/trical.json'; // 假设这是你的自定义主�
 import { debounce } from '../utils';
 import { ref, watch, onMounted, onUnmounted, Ref, onActivated, onDeactivated } from 'vue';
 import { ECharts } from 'echarts/core';
-import { setShowLabel } from '../options/utils';
 
 echarts.use([
   // 注册所有图表公共组件
@@ -46,7 +45,6 @@ export function useEcharts(
   data: any,
   emit: (event: string, ...args: any[]) => void,
   loading = false,
-  checked?: any,
 ) {
   const chart = ref<ECharts | null>(null);
   let $_resizeHandler;
@@ -77,9 +75,7 @@ export function useEcharts(
 
   watch(
     data,
-    newVal => {
-      // setShowLabel(newVal, checked.value);
-      // chart.value.setOption(options, true); // 第二个参数为true表示不合并之前的option
+    () => {
       setOption();
     },
     { deep: true, immediate: true },
@@ -106,7 +102,6 @@ export function useEcharts(
       // 使用 DOM 元素初始化 ECharts 实例
       chart.value = echarts.init(chartRef.value, 'macarons');
       // 设置图表选项
-      // chart.value.setOption(options);
       options && chart.value && chart.value.setOption && chart.value.setOption(options);
     }
   }
@@ -177,6 +172,7 @@ export function useEcharts(
   function setOption() {
     if (!chart.value) return;
     chart.value.clear();
+    // chart.value.setOption(options, true); // 第二个参数为true表示不合并之前的option
     options && chart.value.setOption(options);
   }
   return {

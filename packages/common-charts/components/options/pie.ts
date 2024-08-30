@@ -47,7 +47,8 @@ function getSeriesConfig(pieParams) {
     };
     const newSeries = [firstSecond, seriesSecond];
     return newSeries;
-  } else { // 如果没有指定嵌套饼图，则生成一个标准的饼图配置
+  } else {
+    // 如果没有指定嵌套饼图，则生成一个标准的饼图配置
     return [
       {
         name: '',

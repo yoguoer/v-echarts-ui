@@ -1,7 +1,7 @@
-# v-echarts
+# v-echarts-library
 
 ## 📝 文档
-官方文档：[v-echarts |图表组件文档](https://yoguoer.github.io/v-echarts/)
+官方文档：[v-echarts-library |图表组件文档](https://yoguoer.github.io/v-echarts-library/)
 
 ## ✨ 特性
 

@@ -20,7 +20,7 @@ export default defineConfig({
     },
     lib: {
       entry: './packages/index.ts',
-      name: 'v-echarts',
+      name: 'v-echarts-library',
     }
   },
 

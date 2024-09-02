@@ -1,8 +1,8 @@
 {
-  "name": "v-echarts",
+  "name": "v-echarts-library",
   "author": "Vivien",
   "license": "MIT",
-  "description":"v-echarts文档",
+  "description":"v-echarts-library 文档",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

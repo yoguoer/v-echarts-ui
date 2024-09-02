@@ -1,9 +1,9 @@
 {
-  "name": "v-echarts",
+  "name": "v-echarts-library",
   "version": "1.0.0",
   "author": "Vivien",
   "license": "MIT",
-  "description":"v-echarts",
+  "description": "v-echarts-library",
   "workspaces": [
     "packages/*",
     "docs"
@@ -28,9 +28,11 @@
     "docs:deploy": "pnpm run build && pnpm run docs:build"
   },
   "keywords": [
-    "v-echarts",
-    "vue",
-    "element-plus"
+    "v-echarts-library",
+    "Vue3",
+    "echarts",
+    "component library",
+    "charts"
   ],
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",

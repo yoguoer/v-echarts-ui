@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Vivien",
   "license": "MIT",
-  "description": "v-echarts基础图表",
+  "description": "v-echarts-library 基础图表",
   "main": "./index.ts",
   "moudle": "./index.ts",
   "types": "./index.d.ts",
@@ -21,7 +21,13 @@
     "build": "vite build",
     "docs:build": "vite build --mode docs"
   },
-  "keywords": [],
+  "keywords": [
+    "v-echarts-library",
+    "Vue3",
+    "echarts",
+    "component library",
+    "charts"
+  ],
   "dependencies": {
     "echarts": "^5.5.1",
     "element-plus": "^2.6.2",

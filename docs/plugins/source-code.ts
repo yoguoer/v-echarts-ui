@@ -64,9 +64,9 @@ const sourceCode = () => {
         const compPathStrArr = compPath.split('/')
         // iframe src 地址
         const iframeSrc = compPathStrArr[compPathStrArr.length - 1]
-        // 正则匹配 @v-echarts 路径别名替换为原路径
-        const searchString = new RegExp(`@/v-echarts/${packageName}`, 'g')
-        const replaceString = `v-echarts/${packageName}`
+        // 正则匹配 @v-echarts-library 路径别名替换为原路径
+        const searchString = new RegExp(`@/v-echarts-library/${packageName}`, 'g')
+        const replaceString = `v-echarts-library/${packageName}`
         const file = filesRes[i] ? (filesRes[i] as string).replace(searchString, replaceString) : null
         i++
         // 返回编码后的源码文件内容

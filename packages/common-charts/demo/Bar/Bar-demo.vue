@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts" name="BarDemo">
-import vBar from '../../components/Bar';
+import { vBar }  from '@/v-echarts-library/common-charts';
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'BarDemo';

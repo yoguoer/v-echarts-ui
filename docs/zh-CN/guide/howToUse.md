@@ -93,13 +93,19 @@ v-echarts-library 发布在私有 npm 镜像中，下载该包之前先切换 np
    nrm use your-private-npm
    ```
 
-5. 安装以上步骤安装 v-echarts-library
+5. 登录你的 npm 
+
+   ```
+   npm login
+   ```
+
+6. 安装以上步骤安装 v-echarts-library
 
    ```bash
    npm install  v-echarts-library
    ```
 
-6. 安装相关依赖
+7. 安装相关依赖
 
    ```bash
    # 切换镜像源到 npm 下载相关依赖

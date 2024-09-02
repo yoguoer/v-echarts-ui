@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts" name="BarStackDemo">
-import vBar from '../../components/Bar';
+import { vBar } from '@/v-echarts-library/common-charts';
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'BarStackDemo';

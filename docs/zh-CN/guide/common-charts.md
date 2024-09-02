@@ -14,14 +14,14 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import { commonChartsInstall } from '@v-echarts-library/common-charts'
+import { vCommonChartsInstall } from 'v-echarts-library/common-charts'
 import App from './App.vue'
 
 const app = createApp(App)
 
 app.use(ElementPlus)
 // 注册v-echarts-library/common-charts所有组件
-commonChartsInstall(app)
+vCommonChartsInstall(app)
 app.mount('#app')
 ```
 
@@ -42,7 +42,7 @@ app.mount('#app')
 </template>
 
 <script setup lang="ts">
-import { vBar } from '@v-echarts-library/common-charts'
+import { vBar } from 'v-echarts-library/common-charts'
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'BarStack';

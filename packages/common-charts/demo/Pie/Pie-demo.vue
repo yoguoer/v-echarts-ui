@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts" name="PieDemo">
-import vPie from '../../components/Pie';
+import { vPie } from '@/v-echarts-library/common-charts';
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'PieDemo';

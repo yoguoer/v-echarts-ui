@@ -1,0 +1,57 @@
+{
+  "compileOnSave": true, //设置保存文件的时候自动编译
+  "include": [
+    "types/*.d.ts",
+    "**/types/*.d.ts",
+    "**/types/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "scripts/*.ts",
+    "scripts/**/*.ts" /* 包含项目中的所有 TypeScript 文件 */
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ], //指定编译器需要排除的文件或文件夹
+  "compilerOptions": {
+    //配置编译选项
+    "diagnostics": true, // 打印诊断信息
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "esnext",
+    "lib": [
+      "esnext",
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true, //允许导入.ts和.tsx文件。
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true, //允许从.json文件中导入数据。
+    "isolatedModules": true,
+    "noEmit": true, //编译器不会输出文件。这通常用于与IDE集成，以提供实时错误检查，而不实际生成输出文件。
+    "allowSyntheticDefaultImports": true,
+    "noUnusedParameters": true, //分别报告未使用的局部变量和未使用的函数参数。
+    "noFallthroughCasesInSwitch": true, //如果在switch语句中漏掉了break，编译器将报错。
+    "esModuleInterop": true,
+    "removeComments": false,
+    "rootDir": ".",
+    "jsx": "react-jsx",
+    "types": [],
+    "paths": {
+      "@v-echarts-library/*": [
+        "packages/*"
+      ],
+      "@/v-echarts-library/*": [
+        "packages/*"
+      ]
+    }
+  }
+}

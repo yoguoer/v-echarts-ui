@@ -4,6 +4,9 @@ import vBar from '../components/Bar'
 import vLine from '../components/Line'
 import vPie from '../components/Pie'
 import vGauge from '../components/Gauge'
+import vBasicComponent from '../components/BasicComponent'
+import vSearch from '../components/Search'
+
 
 // 存储组件列表
 export const components = [
@@ -11,7 +14,9 @@ export const components = [
     vBar,
     vLine,
     vPie,
-    vGauge
+    vGauge,
+    vBasicComponent,
+    vSearch
 ]
 
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册

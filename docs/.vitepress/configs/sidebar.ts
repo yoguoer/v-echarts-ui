@@ -1,12 +1,17 @@
 export default {
   '/zh-CN/guide': [
     {
-      text: '快速开始',
-      items: [{ text: '如何使用', link: '/zh-CN/guide/howToUse' }],
-    },
-    {
       text: '使用指南',
-      items: [{ text: '基础图表', link: '/zh-CN/guide/common-charts' }],
+      items: [
+        {
+          text: '入门',
+          items: [
+            { text: '使用图表', link: '/zh-CN/guide/howToUse' },
+            { text: '使用筛选项', link: '/zh-CN/guide/howToSearch' },
+          ],
+        },
+        { text: '基础图表', link: '/zh-CN/guide/common-charts' },
+      ],
     },
   ],
   '/zh-CN/components/': [

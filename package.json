@@ -1,9 +1,9 @@
 {
-  "name": "v-echarts-library",
+  "name": "v-echarts-ui",
   "version": "1.0.0",
   "author": "Vivien",
   "license": "MIT",
-  "description": "v-echarts-library",
+  "description": "基于 Vue3 的图表组件库，提供丰富的图表类型和易于集成的接口，帮助你快速构建数据可视化应用。",
   "workspaces": [
     "packages/*",
     "docs"
@@ -28,7 +28,7 @@
     "docs:deploy": "pnpm run build && pnpm run docs:build"
   },
   "keywords": [
-    "v-echarts-library",
+    "v-echarts-ui",
     "Vue3",
     "echarts",
     "component library",

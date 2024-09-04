@@ -1,7 +1,7 @@
-# v-echarts-library
+# v-echarts-ui
 
 ## 📝 文档
-官方文档：[v-echarts-library |图表组件文档](https://yoguoer.github.io/v-echarts-library/)
+官方文档：[v-echarts-ui |图表组件文档](https://yoguoer.github.io/v-echarts-ui/)
 
 ## ✨ 特性
 

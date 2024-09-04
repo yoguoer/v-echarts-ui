@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts" name="LineDemo">
-import { vLine } from '@/v-echarts-library/common-charts';
+import { vLine } from '@/v-echarts-ui/common-charts';
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'LineDemo';

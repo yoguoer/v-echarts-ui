@@ -1,14 +1,14 @@
 ---
-title: v-echarts-library
+title: v-echarts-ui
 titleTemplate: Vue3 Charts Component Library
-description: v-echarts-library 是基于 Vue3 的图表组件库，提供丰富的图表类型和易于集成的接口，帮助你快速构建数据可视化应用。
+description: v-echarts-ui 是基于 Vue3 的图表组件库，提供丰富的图表类型和易于集成的接口，帮助你快速构建数据可视化应用。
 head:
   - - meta
     - name: description
-      content: v-echarts-library is a Vue3 Charts Component Library
+      content: v-echarts-ui is a Vue3 Charts Component Library
   - - meta
     - name: keywords
-      content: v-echarts-library | echarts Vue3 Charts Component Library
+      content: v-echarts-ui | echarts Vue3 Charts Component Library
 
 layout: home
 
@@ -16,12 +16,12 @@ layout: home
 editLink: true
 lastUpdated: true
 hero:
-  name: v-echarts-library
+  name: v-echarts-ui
   text: vue3图表组件
   tagline: 基于 Vue3 和 echarts 二次封装的图表组件📈📊
   image:
-    src: /img/v-echarts-library.png
-    alt: v-echarts-library
+    src: /img/v-echarts-ui.png
+    alt: v-echarts-ui
   actions:
     - theme: brand
       text: 安装指南

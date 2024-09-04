@@ -14,7 +14,7 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:yoguoer/v-echarts-library.git master:gh-pages
+git push -f git@github.com:yoguoer/v-echarts-ui.git master:gh-pages
 
 cd -
 

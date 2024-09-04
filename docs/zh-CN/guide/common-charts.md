@@ -4,7 +4,7 @@
 
 ## 引入
 
-> 在此之前，确保你已经安装了 `v-echarts-library` 和 `echarts`。
+> 在此之前，确保你已经安装了 `v-echarts-ui` 和 `echarts`。
 
 ### 完整引入
 
@@ -14,13 +14,13 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import { vCommonChartsInstall } from 'v-echarts-library/common-charts'
+import { vCommonChartsInstall } from 'v-echarts-ui/common-charts'
 import App from './App.vue'
 
 const app = createApp(App)
 
 app.use(ElementPlus)
-// 注册v-echarts-library/common-charts所有组件
+// 注册v-echarts-ui/common-charts所有组件
 vCommonChartsInstall(app)
 app.mount('#app')
 ```
@@ -42,7 +42,7 @@ app.mount('#app')
 </template>
 
 <script setup lang="ts">
-import { vBar } from 'v-echarts-library/common-charts'
+import { vBar } from 'v-echarts-ui/common-charts'
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'BarStack';

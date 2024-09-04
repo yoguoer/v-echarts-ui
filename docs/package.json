@@ -1,8 +1,8 @@
 {
-  "name": "v-echarts-library",
+  "name": "v-echarts-ui",
   "author": "Vivien",
   "license": "MIT",
-  "description":"v-echarts-library 文档",
+  "description": "v-echarts-ui 文档",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -15,9 +15,9 @@
     "@vueuse/core": "^10.11.0",
     "element-plus": "^2.7.7",
     "less": "^4.2.0",
+    "lodash": "^4.17.21",
     "path": "^0.12.7",
     "prismjs": "^1.29.0",
-    "lodash": "^4.17.21",
     "vue": "^3.4.31"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
     "postcss": "^8.4.39",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
-    "vitepress": "^1.3.1",
+    "vitepress": "^1.3.4",
     "vue-tsc": "^2.0.24"
   }
 }

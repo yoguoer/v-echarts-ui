@@ -1,7 +1,7 @@
 {
-  "name": "@v-echarts-library/common-charts",
+  "name": "@v-echarts-ui/common-charts",
   "version": "1.0.0",
-  "description": "all v-echarts-library | common-charts components are settled here",
+  "description": "all v-echarts-ui | common-charts components are settled here",
   "main": "index.ts",
   "module": "index.ts",
   "unpkg": "index.js",

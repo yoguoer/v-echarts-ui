@@ -3,6 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { vEchartsTest } from  '@/v-echarts-library/common-charts';
+import { vEchartsTest } from  '@/v-echarts-ui/common-charts';
 
 </script>

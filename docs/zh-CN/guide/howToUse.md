@@ -10,21 +10,21 @@ vue 版本为：3.4.31
 
 ## 安装
 
-### 1. 安装 v-echarts-library
+### 1. 安装 v-echarts-ui
 
 ```bash
 # npm
-npm install v-echarts-library
+npm install v-echarts-ui
 ```
 
 ```bash
 # yarn
-yarn install v-echarts-library
+yarn install v-echarts-ui
 ```
 
 ```bash
 # pnpm
-pnpm install v-echarts-library
+pnpm install v-echarts-ui
 ```
 
 ### 2. 安装相关依赖
@@ -60,7 +60,7 @@ pnpm install echarts
 ### 注意
 
 ::: danger 关于 npm 镜像源
-v-echarts-library 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
+v-echarts-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 :::
 
 如果你使用的私有 npm 仓库，请先将镜像源切换到你的私有 npm 仓库，推荐使用 [nrm](https://www.npmjs.com/package/nrm)  来管理你的镜像源。
@@ -99,10 +99,10 @@ v-echarts-library 发布在私有 npm 镜像中，下载该包之前先切换 np
    npm login
    ```
 
-6. 安装以上步骤安装 v-echarts-library
+6. 安装以上步骤安装 v-echarts-ui
 
    ```bash
-   npm install  v-echarts-library
+   npm install  v-echarts-ui
    ```
 
 7. 安装相关依赖

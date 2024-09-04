@@ -1,1 +1,1 @@
-export const docsSite = '/v-echarts-library'
+export const docsSite = '/v-echarts-ui'

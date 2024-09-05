@@ -18,8 +18,11 @@ export async function alias(): Promise<Array<Alias>> {
   const dirArr = await fsPromises.readdir(projectPath)//读取项目目录下的文件列表
   //遍历文件列表，为每个包创建一个别名
   return dirArr.map(packagePath => {
-    return {
-      find: new RegExp(`@/v-echarts-ui/${packagePath}`),
+    return packagePath === 'v-echarts-ui' ?  { // 通过 v-echarts-ui 直接引用整个包
+      find: packagePath,
+      replacement: path.join(projectPath, `/${packagePath}/`)
+    } :  {
+      find: new RegExp(`@/v-echarts-ui\\/${packagePath}(\\/(dist))?$`),
       replacement: path.join(projectPath, `/${packagePath}/`)
     }
   })

@@ -51,7 +51,13 @@
       ],
       "@/v-echarts-ui/*": [
         "packages/*"
-      ]
+      ],
+      "@/v-echarts-ui": [
+        "packages/v-echarts-ui"
+      ],
+      "v-echarts-ui": [
+        "packages/v-echarts-ui"
+      ],
     }
   }
 }

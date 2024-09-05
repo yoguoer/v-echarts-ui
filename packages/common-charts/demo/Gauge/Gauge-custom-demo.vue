@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts" name="GaugeDataDemo">
-import { vGauge } from '@/v-echarts-ui/common-charts';
+import { vGauge } from 'v-echarts-ui';
 import { computed, onMounted, ref } from 'vue';
 
 const id = 'GaugeDataDemo';

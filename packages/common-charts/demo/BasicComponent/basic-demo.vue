@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts" name="BasicDemo">
-import { vBasicComponent, vSearch } from '@/v-echarts-ui/common-charts';
+import { vBasicComponent, vSearch } from 'v-echarts-ui';
 // 响应数据
 let data = {
   username: 'vivien',

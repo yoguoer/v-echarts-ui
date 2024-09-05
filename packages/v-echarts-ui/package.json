@@ -1,0 +1,15 @@
+{
+  "name": "v-echarts-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "dependencies": {  
+    "@v-echarts-ui/common-charts": "../common-charts"
+  },  
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

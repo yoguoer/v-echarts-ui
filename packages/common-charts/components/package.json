@@ -1,5 +1,5 @@
 {
-  "name": "@v-echarts-ui/common-charts",
+  "name": "common-charts",
   "version": "1.0.0",
   "description": "all v-echarts-ui | common-charts components are settled here",
   "main": "index.ts",

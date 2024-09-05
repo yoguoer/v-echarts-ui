@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts" name="SearchDemo">
-import { vSearch } from '@/v-echarts-ui/common-charts';
+import { vSearch } from 'v-echarts-ui';
 import { reactive } from 'vue';
 import type { FormRules } from 'element-plus';
 interface RuleForm {

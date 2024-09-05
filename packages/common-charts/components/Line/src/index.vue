@@ -1,5 +1,5 @@
 <template>
-  <div class="my-charts-container">
+  <div :class="[`${prefixCls}`]">
     <Tools :showTips="showTips" 
     :showCheckbox="showCheckbox" 
     @setShowLabel="handleShowLabel" 
@@ -26,6 +26,7 @@ import {
   MarkPointComponent,
   MarkLineComponent,
 } from 'echarts/components';
+import { useDesign } from "../../../hooks/useDesign";
 
 echarts.use([
   TitleComponent,
@@ -97,10 +98,14 @@ function handleShowLabel(newChecked: boolean) {
 onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
+
+const { getPrefixCls } = useDesign();
+const prefixCls = getPrefixCls("line");
 </script>
 
 <style lang="less" scoped>
-.my-charts-container {
+@prefix-cls: ~"@{vEchartsNamespace}-line";
+.@{prefix-cls} {
   position: relative;
 }
 </style>

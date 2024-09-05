@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'tools-all':showTips,'tools-one': !(showTips && props?.data?.msg && showCheckbox)}">
+  <div :class="{ [`${prefixCls}-tools-all`]:showTips, [`${prefixCls}-tools-one`]: !(showTips && props?.data?.msg && showCheckbox)}">
     <Tips
       v-if="showTips && props?.data?.msg"
       class="tips"
@@ -16,6 +16,7 @@
 import { ref, defineProps, defineEmits } from 'vue';
 import Tips from './Tips.vue';
 import Checkbox from './Checkbox.vue';
+import { useDesign } from "../../hooks/useDesign";
 
 const props = defineProps({
   showTips: {
@@ -40,6 +41,9 @@ function setShowLabel(newChecked: boolean) {
   checked.value = !checked.value;
   emit('setShowLabel', newChecked);
 }
+
+const { getPrefixCls } = useDesign();
+const prefixCls = getPrefixCls("extend");
 </script>
 <script lang="ts">
 export default {
@@ -47,7 +51,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.tools-all,.tools-one {
+@prefix-cls: ~"@{vEchartsNamespace}-extend";
+
+.@{prefix-cls}-tools-all,.@{prefix-cls}-tools-one {
   position: relative;
   z-index: 1000000000;
   display: flex;
@@ -59,7 +65,7 @@ export default {
     margin-right: 5px;
   }
 }
-.tools-one {
+.@{prefix-cls}-tools-one {
     right: 20px;
 }
 </style>

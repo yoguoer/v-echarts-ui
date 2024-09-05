@@ -1,5 +1,5 @@
 <template>
-  <div class="my-charts-container">
+  <div :class="[`${prefixCls}`]">
     <div
       :id="id"
       :class="className"
@@ -17,6 +17,7 @@ import { GaugeChart, BarChart } from 'echarts/charts';
 import { guageOptions } from '../../options/guage';
 import { useEcharts } from '../../mixins/useEcharts';
 import { emitEvents } from '../../mixins/emitEvents';
+import { useDesign } from "../../../hooks/useDesign";
 
 echarts.use([TooltipComponent, TitleComponent, PolarComponent, GaugeChart, BarChart]);
 
@@ -72,9 +73,13 @@ const { chart } = useEcharts(gaugeChartRef, chartOptions.value, props.data, emit
 onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
+
+const { getPrefixCls } = useDesign();
+const prefixCls = getPrefixCls("gauge");
 </script>
 <style lang="less" scoped>
-.my-charts-container {
+@prefix-cls: ~"@{vEchartsNamespace}-gauge";
+.@{prefix-cls} {
   position: relative;
 
   &::deep canvas {

@@ -1,5 +1,5 @@
 <template>
-  <div class="my-charts-container">
+  <div :class="[`${prefixCls}`]">
     <Tools 
     :showTips="showTips" 
     :showCheckbox="showCheckbox" 
@@ -18,6 +18,7 @@ import { setShowLabel } from '../../options/utils';
 import { useEcharts } from '../../mixins/useEcharts';
 import { emitEvents } from '../../mixins/emitEvents';
 import Tools from '../../Extend/index.vue';
+import { useDesign } from "../../../hooks/useDesign";
 
 echarts.use([PieChart]);
 
@@ -80,9 +81,13 @@ function handleShowLabel(newChecked: boolean) {
 onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
+
+const { getPrefixCls } = useDesign();
+const prefixCls = getPrefixCls("pie");
 </script>
 <style lang="less" scoped>
-.my-charts-container {
+@prefix-cls: ~"@{vEchartsNamespace}-pie";
+.@{prefix-cls} {
   position: relative;
 }
 </style>

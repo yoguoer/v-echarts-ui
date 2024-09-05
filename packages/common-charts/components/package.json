@@ -1,6 +1,6 @@
 {
   "name": "common-charts",
-  "version": "1.0.9",
+  "version": "1.0.6",
   "description": "all v-echarts-ui | common-charts components are settled here",
   "main": "index.ts",
   "module": "index.ts",

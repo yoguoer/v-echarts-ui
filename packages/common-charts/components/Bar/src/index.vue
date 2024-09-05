@@ -1,10 +1,11 @@
 <template>
-  <div class="container">
+  <div class="my-charts-container">
     <Tools
       :showTips="showTips"
       :showCheckbox="showCheckbox"
       @setShowLabel="handleShowLabel"
-      :data="props?.data" />
+      :data="props?.data"
+      :style="{ width: width }" />
     <div :id="id" :class="className" :style="{ height: height, width: width }" ref="barChartRef" />
   </div>
 </template>
@@ -98,8 +99,8 @@ onBeforeUpdate(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.container {
+<style lang="less" scoped>
+.my-charts-container {
   position: relative;
 }
 </style>

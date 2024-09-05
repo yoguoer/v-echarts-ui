@@ -1,6 +1,6 @@
 {
   "name": "common-charts",
-  "version": "1.0.9",
+  "version": "1.0.6",
   "author": "Vivien",
   "license": "MIT",
   "description": "v-echarts-ui 中的基础图表",
@@ -38,11 +38,7 @@
     "@element-plus/icons-vue": "^2.3.1",
     "@vue/tsconfig": "^0.5.1",
     "axios": "^1.7.5",
-    "less": "^4.2.0",
     "qs": "^6.13.0",
-    "sass": "^1.57.1",
-    "sass-loader": "^16.0.0",
-    "sass-resources-loader": "^2.2.5",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   }

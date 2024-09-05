@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="my-charts-container">
     <div
       :id="id"
       :class="className"
@@ -73,8 +73,8 @@ onBeforeUpdate(() => {
   chart.value.setOption(chartOptions.value);
 });
 </script>
-<style lang="scss" scoped>
-.container {
+<style lang="less" scoped>
+.my-charts-container {
   position: relative;
 
   &::deep canvas {

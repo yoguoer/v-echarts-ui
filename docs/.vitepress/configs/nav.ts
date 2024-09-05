@@ -4,7 +4,7 @@ export default [
         link: '/zh-CN/guide/howToUse'
     },
     { text: '基础图表', link: '/zh-CN/components/common-charts/组件总览' },
-    // { text: '测试', link: '/zh-CN/components/common-charts/test/readme' },
+    // { text: '测试', link: '/zh-CN/components/common-charts/test/test' },
     // {
     //     text: '博客',
     //     items: [

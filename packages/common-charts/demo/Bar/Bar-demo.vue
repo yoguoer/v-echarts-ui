@@ -17,7 +17,7 @@ import { computed, onMounted, ref } from 'vue';
 
 const id = 'BarDemo';
 const chartData = ref({});
-const width = '100%'; // 可选
+const width = '80%'; // 可选
 const height = '500px'; // 可选
 const loading = ref(true); // 可选
 // 可选，不传则使用默认Options

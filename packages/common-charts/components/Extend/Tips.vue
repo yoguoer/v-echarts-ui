@@ -7,7 +7,9 @@
       trigger="hover"
       :title="title || '计算公式'">
       <template #reference>
-        <Opportunity class="icon-opportunity-class"></Opportunity>
+        <el-icon :size="20">
+          <Opportunity></Opportunity>
+        </el-icon>
       </template>
       <div class="content-container">
         <el-divider class="divider" />
@@ -39,7 +41,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .tips-container {
   width: 16px;
   margin: 5px 0px;
@@ -58,9 +60,5 @@ export default {
     white-space: pre-wrap;
     text-overflow: ellipsis;
   }
-}
-
-.icon-opportunity-class{
-  width: 10px;
 }
 </style>

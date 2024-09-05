@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="{ 'full-screen-container': isFullScreen }">
+  <div class="demo-container" :class="{ 'full-screen-container': isFullScreen }">
     <div class="demo">
       <!--操作菜单-->
       <div class="menu">
@@ -142,7 +142,7 @@ export default {
 <style scoped lang="less">
 @menu-height: 32px;
 
-.container {
+.demo-container {
   border: 1px solid #dcdfe6b2;
   border-radius: var(--ve-border-radius-base);
 }

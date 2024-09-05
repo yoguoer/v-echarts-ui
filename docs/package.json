@@ -3,7 +3,7 @@
   "author": "Vivien",
   "license": "MIT",
   "description": "v-echarts-ui 文档",
-  "version": "1.0.9",
+  "version": "1.0.6",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
@@ -14,7 +14,6 @@
     "@element-plus/icons-vue": "^2.3.1",
     "@vueuse/core": "^10.11.0",
     "element-plus": "^2.7.7",
-    "less": "^4.2.0",
     "lodash": "^4.17.21",
     "path": "^0.12.7",
     "prismjs": "^1.29.0",

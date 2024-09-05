@@ -46,11 +46,12 @@ export default {
   name: 'Tools',
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .tools-all,.tools-one {
   position: relative;
   z-index: 1000000000;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
   top: 30px;
   right: 10px;

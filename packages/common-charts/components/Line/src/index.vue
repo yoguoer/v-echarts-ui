@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <Tools :showTips="showTips" :showCheckbox="showCheckbox" @setShowLabel="handleShowLabel" />
+  <div class="my-charts-container">
+    <Tools :showTips="showTips" 
+    :showCheckbox="showCheckbox" 
+    @setShowLabel="handleShowLabel" 
+    :style="{ width: width }"/>
     <div :id="id" :class="className" :style="{ height: height, width: width }" ref="lineChartRef" />
   </div>
 </template>
@@ -96,8 +99,8 @@ onBeforeUpdate(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.container {
+<style lang="less" scoped>
+.my-charts-container {
   position: relative;
 }
 </style>

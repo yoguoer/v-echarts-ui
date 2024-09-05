@@ -1,1 +1,1 @@
-export * from '../common-charts/index.ts';  
+export * from '../common-charts';  

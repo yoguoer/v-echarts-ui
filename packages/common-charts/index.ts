@@ -1,5 +1,5 @@
 export * from './components'
 
-export { installer as vCommonChartsInstall } from './utils/install'
+export { installer as vEChartsInstall } from './utils/install'
 
 

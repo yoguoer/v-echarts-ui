@@ -1,27 +1,9 @@
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
-import { defineConfig, ConfigEnv } from 'vite';
+import { defineConfig } from 'vite';
 import { alias } from '../../scripts';
-import { docsSite } from '../../config/site';
 
-export default defineConfig(async ({ command, mode }: ConfigEnv) => {
-  const alia = await alias();
-  // 构建参数 mode 为 'docs' 时候配置
-  let docsBuild = {
-    // 开发或生产环境服务的公共基础路径，该路径影响路由组件前缀，在单页面应用中在所有路由路径添加 base 配置的前缀
-    base: `${docsSite}/v-echarts-ui/`,
-    build: {
-      //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
-      outDir: '../../docs/.vitepress/dist/v-echarts-ui',
-      // publicDir 影响 html 页面中所有资源引用的路径。注意在单页面应用中使用绝对路径，通过 协议+域名+绝对路径 生成最终资源地址
-      publicDir: `${docsSite}/`,
-    },
-  };
-
-  const configs = {
-    server: {
-      port: '3008',
-    },
+export default defineConfig({
     plugins: [vue()],
     build: {
       rollupOptions: {
@@ -40,14 +22,12 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
       lib: {
         //打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
         entry: path.resolve(__dirname, './index.ts'),
-        name: 'vEchartsUI',
+        name: 'vEchartsCommonCharts',
         fileName: (format: string) => `vEcharts-v-echarts-ui.${format}.js`, // 根据格式自定义文件名
         formats: ['es', 'cjs'], // 构建输出 es、cjs、umd、iife 格式的包
       },
     },
     resolve: {
-      alias: alia,
+      alias: alias,
     },
-  };
-  return mode === 'docs' ? Object.assign(configs, docsBuild) : configs;
 });

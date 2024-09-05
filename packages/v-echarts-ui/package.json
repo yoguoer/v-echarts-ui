@@ -1,8 +1,8 @@
 {
-  "name": "v-echarts-ui",
-  "version": "1.0.0",
+  "name": "v-echarts",
+  "version": "1.0.9",
   "description": "",
-  "main": "index.ts",
+  "main": "./index.ts",
   "dependencies": {  
     "@v-echarts-ui/common-charts": "../common-charts"
   },  

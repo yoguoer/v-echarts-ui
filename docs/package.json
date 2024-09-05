@@ -3,7 +3,7 @@
   "author": "Vivien",
   "license": "MIT",
   "description": "v-echarts-ui 文档",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",

@@ -1,6 +1,6 @@
 {
   "name": "v-echarts-ui",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "author": "Vivien",
   "license": "MIT",
   "description": "基于 Vue3 的图表组件库，提供丰富的图表类型和易于集成的接口，帮助你快速构建数据可视化应用。",
@@ -8,12 +8,11 @@
     "packages/*",
     "docs"
   ],
-  "main": "./index.js",
-  "module": "./index.mjs",
+  "main": "./index.ts",
   "exports": {
     ".": {
-      "require": "./index.js",
-      "import": "./index.mjs"
+      "require": "./packages/v-echarts-ui/dist/index.cjs.js",
+      "import": "./packages/v-echarts-ui/dist/index.es.js"
     },
     "./common-charts": {
       "require": "./packages/common-charts/dist/index.cjs.js",
@@ -24,6 +23,7 @@
     "docs:dev": "pnpm run -C docs docs:dev",
     "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/common-charts docs:build",
     "build": "pnpm run build:common && pnpm run build:ui",
+    "prepublishOnly": "npm run build",
     "build:common": "pnpm run -C packages/common-charts build",
     "build:ui": "pnpm run -C packages/v-echarts-ui build",
     "docs:deploy": "pnpm run build && pnpm run docs:build"

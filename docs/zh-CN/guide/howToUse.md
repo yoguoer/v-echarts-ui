@@ -132,7 +132,7 @@ npm install echarts
 
 5. 登录你的 npm 
 
-   ```
+   ```bash
    npm login
    ```
 

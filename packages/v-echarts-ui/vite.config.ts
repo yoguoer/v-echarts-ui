@@ -1,10 +1,38 @@
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
-import { defineConfig } from 'vite';
+import { defineConfig, ConfigEnv } from 'vite';
 import { alias } from '../../scripts';
+import { docsSite } from '../../config/site';
 
-export default defineConfig({
+export default defineConfig(async ({ command, mode }: ConfigEnv) => {
+  const alia = await alias();
+  // 构建参数 mode 为 'docs' 时候配置
+  let docsBuild = {
+    // 开发或生产环境服务的公共基础路径，该路径影响路由组件前缀，在单页面应用中在所有路由路径添加 base 配置的前缀
+    base: `${docsSite}/v-echarts-ui/`,
+    build: {
+      //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
+      outDir: '../../docs/.vitepress/dist/v-echarts-ui',
+      // publicDir 影响 html 页面中所有资源引用的路径。注意在单页面应用中使用绝对路径，通过 协议+域名+绝对路径 生成最终资源地址
+      publicDir: `${docsSite}/`,
+    },
+  };
+
+  const configs = {
+    server: {
+      port: '3008',
+    },
     plugins: [vue()],
+    // css 配置
+    css: {
+      preprocessorOptions: {
+        // 引入 less 全局变量
+        less: {
+          additionalData: '@import "./variables.module.less";',
+          javascriptEnabled: true,
+        },
+      },
+    },
     build: {
       rollupOptions: {
         output: {
@@ -28,6 +56,8 @@ export default defineConfig({
       },
     },
     resolve: {
-      alias: alias,
+      alias: alia,
     },
+  };
+  return mode === 'docs' ? Object.assign(configs, docsBuild) : configs;
 });

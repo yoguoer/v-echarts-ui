@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts" name="Bar">
-import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue';
-import * as echarts from 'echarts/core';
-import { BarChart } from 'echarts/charts';
+import { ref, computed, onBeforeUpdate, defineProps, defineEmits } from 'vue'
+import * as echarts from 'echarts/core'
+import { BarChart } from 'echarts/charts'
 import {
   GridComponent,
   ToolboxComponent,
@@ -21,13 +21,13 @@ import {
   LegendComponent,
   MarkLineComponent,
   MarkPointComponent,
-} from 'echarts/components';
-import { barOptions } from '../../options/bar';
-import { setShowLabel } from '../../options/utils';
-import { useEcharts } from '../../mixins/useEcharts';
-import { emitEvents } from '../../mixins/emitEvents';
-import Tools from '../../Extend/index.vue';
-import { useDesign } from "../../../hooks/useDesign";
+} from 'echarts/components'
+import { barOptions } from '../../options/bar'
+import { setShowLabel } from '../../options/utils'
+import { useEcharts } from '../../mixins/useEcharts'
+import { emitEvents } from '../../mixins/emitEvents'
+import Tools from '../../Extend/index.vue'
+import { useDesign } from '../../../hooks/useDesign'
 
 echarts.use([
   BarChart,
@@ -37,9 +37,9 @@ echarts.use([
   LegendComponent,
   MarkLineComponent,
   MarkPointComponent,
-]);
+])
 
-const emit = defineEmits(emitEvents);
+const emit = defineEmits(emitEvents)
 
 const props = defineProps({
   id: {
@@ -82,29 +82,30 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-});
+})
 
-const chartOptions = computed(() => barOptions(props));
+const chartOptions = computed(() => barOptions(props))
 
 // 定义一个 ref 用于 DOM 引用
-const barChartRef = ref<HTMLElement | null>(null);
-const { chart } = useEcharts(barChartRef, chartOptions.value, props.data, emit, props.loading);
+const barChartRef = ref<HTMLElement | null>(null)
+const { chart } = useEcharts(barChartRef, chartOptions.value, props.data, emit, props.loading)
 
 function handleShowLabel(newChecked: boolean) {
-  setShowLabel(chartOptions.value, newChecked);
-  chart.value.setOption(chartOptions.value);
+  setShowLabel(chartOptions.value, newChecked)
+  chart.value.setOption(chartOptions.value)
 }
 
 onBeforeUpdate(() => {
-  chart.value.setOption(chartOptions.value);
-});
+  chart.value.setOption(chartOptions.value)
+})
 
-const { getPrefixCls } = useDesign();
-const prefixCls = getPrefixCls("bar");
+const { getPrefixCls } = useDesign()
+const prefixCls = getPrefixCls('bar')
 </script>
 
 <style lang="less" scoped>
-@prefix-cls: ~"@{vEchartsNamespace}-bar";
+@prefix-cls: ~'@{vEchartsNamespace}-bar';
+
 .@{prefix-cls} {
   position: relative;
 }

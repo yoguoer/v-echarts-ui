@@ -1,7 +1,7 @@
 <template>
   <div :class="[`${prefixCls}`]">
     <vSearch :options="searchOptions" v-on="$attrs" v-bind="$attrs" />
-    <vBar
+    <vLine
       :data="data"
       :options="options"
       :params="params"
@@ -16,9 +16,9 @@
   </div>
 </template>
 
-<script setup lang="ts" name="BarSearch">
+<script setup lang="ts" name="LineSearch">
 import { defineProps } from 'vue'
-import { vBar } from '../../Bar'
+import { vLine } from '../../Line'
 import { vSearch } from '../../Search'
 import { useDesign } from '../../../hooks/useDesign'
 
@@ -70,11 +70,11 @@ const props = defineProps({
 })
 
 const { getPrefixCls } = useDesign()
-const prefixCls = getPrefixCls('bar-search')
+const prefixCls = getPrefixCls('line-search')
 </script>
 
 <style lang="less" scoped>
-@prefix-cls: ~'@{vEchartsNamespace}-bar-search';
+@prefix-cls: ~'@{vEchartsNamespace}-line-search';
 .@{prefix-cls} {
   position: relative;
 }

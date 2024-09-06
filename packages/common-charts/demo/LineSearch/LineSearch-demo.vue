@@ -1,5 +1,5 @@
 <template>
-  <vBarSearch
+  <vLineSearch
     :data="chartData"
     :params="chartParams"
     :height="height"
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts" name="BarSearchDemo">
-import { vBarSearch } from 'v-echarts-ui'
+import { vLineSearch } from 'v-echarts-ui'
 import { computed, onMounted, ref, reactive } from 'vue'
 
 // 响应数据
@@ -106,11 +106,11 @@ async function getData() {
             series: [
               {
                 name: 2023,
-                data: [0.97, 0.97, 1.03, 1.05, 1.05, 1.07, 1.08, 1.09, 1.1, 1.12, 1.14, 1.16],
+                data: [1.26, 1.13, 1.1, 1.09, 1.08, 1.09, 1.1, 1.11, 1.13, 1.14, 1.13, 1.14],
               },
               {
                 name: 2024,
-                data: [1.08, 1.11, 1.14, null, null, null, null, null, null, null, null, null],
+                data: [1.2, 1.28, 1.27, null, null, null, null, null, null, null, null, null],
               },
             ],
             row: [
@@ -151,44 +151,61 @@ async function getData() {
                 month: '2023-12',
               },
             ],
-            msg: '研发人效指数=单位时间内关闭NPI项目的总标准工时/上述项目的全期间申报工时',
+            msgTitle: '计算方法',
+            msg: '研发人效指数=单位时间内项目标准工时/单位时间内项目申报工时',
           }
         : {
-            xAxis: ['week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7'],
+            xAxis: ['1周', '2周', '3周', '4周', '5周', '6周', '7周'],
             series: [
               {
                 name: 2023,
-                data: [0.97, 0.85, 0.67, 0.98, 1.02, 1.01, 0.66],
+                data: [1.76, 1.03, 1.1, 1.09, 0.08, 1.09, 1.1],
               },
               {
                 name: 2024,
-                data: [0.88, 0.71, 0.54, null, 1.0, 1.03, 0.49],
+                data: [1.6, 1.28, 1.37, 1.01, 1.13, 1.14, 1.13],
               },
             ],
             row: [
               {
-                week: '1',
+                month: '2024-01',
               },
               {
-                week: '2',
+                month: '2024-02',
               },
               {
-                week: '3',
+                month: '2024-03',
               },
               {
-                week: '4',
+                month: '2023-04',
               },
               {
-                week: '5',
+                month: '2023-05',
               },
               {
-                week: '6',
+                month: '2023-06',
               },
               {
-                week: '7',
+                month: '2023-07',
+              },
+              {
+                month: '2023-08',
+              },
+              {
+                month: '2023-09',
+              },
+              {
+                month: '2023-10',
+              },
+              {
+                month: '2023-11',
+              },
+              {
+                month: '2023-12',
               },
             ],
-            msg: '研发人效指数=单位时间内关闭NPI项目的总标准工时/上述项目的全期间申报工时',
+            msgTitle: '计算方法',
+            msg: '研发人效指数=单位时间内项目标准工时/单位时间内项目申报工时',
           }
   } catch (error) {
     console.log('🚀 ~ getData ~ error:', error)

@@ -12,14 +12,14 @@
 </template>
 
 <script setup lang="ts" name="BarDemo">
-import { vBar }  from 'v-echarts-ui';
-import { computed, onMounted, ref } from 'vue';
+import { vBar } from 'v-echarts-ui'
+import { computed, onMounted, ref } from 'vue'
 
-const id = 'BarDemo';
-const chartData = ref({});
-const width = '80%'; // 可选
-const height = '500px'; // 可选
-const loading = ref(true); // 可选
+const id = 'BarDemo'
+const chartData = ref({})
+const width = '80%' // 可选
+const height = '500px' // 可选
+const loading = ref(true) // 可选
 // 可选，不传则使用默认Options
 const chartOptions = computed(() => {
   return {
@@ -70,16 +70,16 @@ const chartOptions = computed(() => {
         verticalAlign: 'top',
       },
     },
-  };
-});
+  }
+})
 
 const chartParams = computed(() => {
   return {
     showToolBox: true, // 显示工具栏
     position: 'top', // 柱状图数字提示位置
     isCross: false, // 柱状图是否为横向,
-  };
-});
+  }
+})
 
 async function getData() {
   try {
@@ -147,14 +147,14 @@ async function getData() {
         },
       ],
       msg: '研发人效指数=单位时间内关闭NPI项目的总标准工时/上述项目的全期间申报工时',
-    };
+    }
   } catch (error) {
-    console.log('🚀 ~ getData ~ error:', error);
+    console.log('🚀 ~ getData ~ error:', error)
   }
 }
 
 // 在组件挂载后获取数据
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>

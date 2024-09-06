@@ -1,5 +1,9 @@
 <template>
-  <div :class="{ [`${prefixCls}-tools-all`]:showTips, [`${prefixCls}-tools-one`]: !(showTips && props?.data?.msg && showCheckbox)}">
+  <div
+    :class="{
+      [`${prefixCls}-tools-all`]: showTips,
+      [`${prefixCls}-tools-one`]: !(showTips && props?.data?.msg && showCheckbox),
+    }">
     <Tips
       v-if="showTips && props?.data?.msg"
       class="tips"
@@ -13,10 +17,10 @@
   </div>
 </template>
 <script setup lang="ts" name="Tools">
-import { ref, defineProps, defineEmits } from 'vue';
-import Tips from './Tips.vue';
-import Checkbox from './Checkbox.vue';
-import { useDesign } from "../../hooks/useDesign";
+import { ref, defineProps, defineEmits } from 'vue'
+import Tips from './Tips.vue'
+import Checkbox from './Checkbox.vue'
+import { useDesign } from '../../hooks/useDesign'
 
 const props = defineProps({
   showTips: {
@@ -31,29 +35,30 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
-});
+})
 
-const emit = defineEmits(['setShowLabel']);
+const emit = defineEmits(['setShowLabel'])
 
-const checked = ref(props?.showCheckbox);
+const checked = ref(props?.showCheckbox)
 
 function setShowLabel(newChecked: boolean) {
-  checked.value = !checked.value;
-  emit('setShowLabel', newChecked);
+  checked.value = !checked.value
+  emit('setShowLabel', newChecked)
 }
 
-const { getPrefixCls } = useDesign();
-const prefixCls = getPrefixCls("extend");
+const { getPrefixCls } = useDesign()
+const prefixCls = getPrefixCls('extend')
 </script>
 <script lang="ts">
 export default {
   name: 'Tools',
-};
+}
 </script>
 <style lang="less" scoped>
-@prefix-cls: ~"@{vEchartsNamespace}-extend";
+@prefix-cls: ~'@{vEchartsNamespace}-extend';
 
-.@{prefix-cls}-tools-all,.@{prefix-cls}-tools-one {
+.@{prefix-cls}-tools-all,
+.@{prefix-cls}-tools-one {
   position: relative;
   z-index: 1000000000;
   display: flex;
@@ -66,6 +71,6 @@ export default {
   }
 }
 .@{prefix-cls}-tools-one {
-    right: 20px;
+  right: 20px;
 }
 </style>

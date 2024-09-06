@@ -5,13 +5,13 @@
 </template>
 
 <script setup lang="ts" name="BasicDemo">
-import { vBasicComponent, vSearch } from 'v-echarts-ui';
+import { vBasicComponent, vSearch } from 'v-echarts-ui'
 // 响应数据
 let data = {
   username: 'vivien',
   hobby: 'sleep',
   place: 'GuangZhou',
-};
+}
 
 const formOptions = {
   mode: data,
@@ -83,7 +83,7 @@ const formOptions = {
       },
     ],
   ],
-};
+}
 
 const element = {
   comp: vSearch, // 注意直接传入自定义组件对象
@@ -94,7 +94,7 @@ const element = {
     },
     options: formOptions,
   },
-};
+}
 </script>
 
 <style scoped lang="less"></style>

@@ -3,13 +3,13 @@
 </template>
 
 <script setup lang="ts" name="SearchDemo">
-import { vSearch } from 'v-echarts-ui';
-import { reactive } from 'vue';
-import type { FormRules } from 'element-plus';
+import { vSearch } from 'v-echarts-ui'
+import { reactive } from 'vue'
+import type { FormRules } from 'element-plus'
 interface RuleForm {
-  username: string;
-  star: boolean;
-  github: string;
+  username: string
+  star: boolean
+  github: string
 }
 
 // 响应数据
@@ -17,7 +17,7 @@ let data = reactive<RuleForm>({
   username: 'v-echarts-ui',
   star: true,
   github: 'https://github.com/yoguoer',
-});
+})
 
 const rules = reactive<FormRules<RuleForm>>({
   username: [
@@ -31,7 +31,7 @@ const rules = reactive<FormRules<RuleForm>>({
       trigger: 'change',
     },
   ],
-});
+})
 // from 表单配置项
 const searchOptions = {
   mode: data,
@@ -73,7 +73,7 @@ const searchOptions = {
       },
     ],
   ],
-};
+}
 </script>
 
 <style scoped lang="less"></style>

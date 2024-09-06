@@ -20,8 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { Opportunity } from '@element-plus/icons-vue';
+import { defineProps } from 'vue'
+import { Opportunity } from '@element-plus/icons-vue'
 
 // 定义props
 const props = defineProps({
@@ -33,12 +33,12 @@ const props = defineProps({
     type: String,
     default: null,
   },
-});
+})
 </script>
 <script lang="ts">
 export default {
   name: 'Tips',
-};
+}
 </script>
 
 <style lang="less" scoped>

@@ -20,14 +20,14 @@
 </template>
 
 <script setup lang="ts" name="BasicComponent">
-import { CompType } from '../type';
-import { defineProps, toRef } from 'vue';
-import { isString } from '../../utils/is';
+import { CompType } from '../type'
+import { defineProps, toRef } from 'vue'
+import { isString } from '../../utils/is'
 const props = defineProps<{
-  options: CompType;
-}>();
+  options: CompType
+}>()
 
-const compName = isString(props.options.comp) ? `${props.options.comp}` : props.options.comp;
+const compName = isString(props.options.comp) ? `${props.options.comp}` : props.options.comp
 
 /**
  * 依据 options 中 data 属性和 key 属性确定渲染组件的响应数据
@@ -37,7 +37,7 @@ const compName = isString(props.options.comp) ? `${props.options.comp}` : props.
 const value =
   props.options.data && props.options.hasOwnProperty('key')
     ? toRef(props.options.data, props.options.key as string)
-    : props.options.data;
+    : props.options.data
 
 /**
  * 依据 options 中 content 属性的 text 属性和 key 属性确定渲染组件的渲染文本内容
@@ -47,11 +47,11 @@ const value =
 const content =
   props.options.content && props.options.content?.hasOwnProperty('key')
     ? toRef(props.options.content.text, props.options.content.key as string)
-    : props.options.content?.text;
+    : props.options.content?.text
 </script>
 <script lang="ts">
 export default {
   name: 'BasicComponent',
-};
+}
 </script>
 <style scoped lang="less"></style>

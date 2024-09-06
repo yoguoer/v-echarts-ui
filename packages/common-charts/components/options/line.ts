@@ -1,6 +1,6 @@
-import { recursionObject } from '../utils';
-import echart from '../theme/theme.json';
-import { getMarkLine, getTooltip, getToolBox, yAxis, axisLabel } from './common.ts';
+import { recursionObject } from '../utils'
+import echart from '../theme/theme.json'
+import { getMarkLine, getTooltip, getToolBox, yAxis, axisLabel } from './common.ts'
 
 // 获取系列配置
 function getSeriesConfig({ seriesItem, options, params }) {
@@ -19,7 +19,7 @@ function getSeriesConfig({ seriesItem, options, params }) {
       show: true, // 开启显示
     },
     markLine: getMarkLine(),
-  };
+  }
 }
 
 /**
@@ -34,7 +34,7 @@ function getSeriesConfig({ seriesItem, options, params }) {
  * }
  */
 class defaultOpt {
-  option: any; // 或更具体的类型
+  option: any // 或更具体的类型
   constructor(lineParams) {
     this.option = {
       toolbox: getToolBox(lineParams),
@@ -74,27 +74,27 @@ class defaultOpt {
         ...yAxis,
       },
       series: [],
-    };
+    }
   }
 }
 
 // 导出 lineOptions 函数，用于生成 line 图表的配置项
 export function lineOptions(props) {
-  const { data } = props;
+  const { data } = props
 
-  const getDefaultOpt = new defaultOpt(props.params).option;
-  const opt = recursionObject({}, getDefaultOpt, props.options);
+  const getDefaultOpt = new defaultOpt(props.params).option
+  const opt = recursionObject({}, getDefaultOpt, props.options)
   //使用数据集处理
   if (props.params.dataset && data.length > 1) {
     const dataset = {
       source: data,
       dimensions: Object.keys(data[0]),
-    };
-    opt.dataset = dataset;
-    opt.legend.data = Object.keys(data[0]);
+    }
+    opt.dataset = dataset
+    opt.legend.data = Object.keys(data[0])
   } else {
     //非数据集处理
-    opt.xAxis.data = (data && data.xAxis) || [];
+    opt.xAxis.data = (data && data.xAxis) || []
     if (data && data.series) {
       opt.series =
         data.series.map(item =>
@@ -107,8 +107,8 @@ export function lineOptions(props) {
               params: props.params,
             }),
           ),
-        ) || [];
+        ) || []
     }
   }
-  return opt;
+  return opt
 }

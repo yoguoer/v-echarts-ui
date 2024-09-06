@@ -10,14 +10,14 @@
 </template>
 
 <script setup lang="ts" name="GaugeDataDemo">
-import { vGauge } from 'v-echarts-ui';
-import { computed, onMounted, ref } from 'vue';
+import { vGauge } from 'v-echarts-ui'
+import { computed, onMounted, ref } from 'vue'
 
-const id = 'GaugeDataDemo';
-const chartData = ref([]);
-const width = '300px'; // 可选
-const height = '300px'; // 可选
-const loading = ref(false); // 可选
+const id = 'GaugeDataDemo'
+const chartData = ref([])
+const width = '300px' // 可选
+const height = '300px' // 可选
+const loading = ref(false) // 可选
 
 // 可选，不传则使用默认Options
 const chartOptions = computed(() => {
@@ -36,8 +36,8 @@ const chartOptions = computed(() => {
       feature: {
         // 控制工具栏
         saveAsImage: { show: true, title: '导出图片' }, // 导出图片
-        dataZoom: { show: true, title: { zoom: '区域缩放', back: '区域还原' }}, // 数据区域缩放
-        restore: { show: true, title: '重置' } // 重置
+        dataZoom: { show: true, title: { zoom: '区域缩放', back: '区域还原' } }, // 数据区域缩放
+        restore: { show: true, title: '重置' }, // 重置
       },
     },
     series: [
@@ -105,7 +105,7 @@ const chartOptions = computed(() => {
           fontSize: 22,
           offsetCenter: [0, '85%'],
           formatter: function (value) {
-            return value + '%';
+            return value + '%'
           },
         },
         smooth: true,
@@ -114,25 +114,25 @@ const chartOptions = computed(() => {
         data: chartData.value,
       },
     ],
-  };
-});
+  }
+})
 
 const chartParams = computed(() => {
   return {
     showToolBox: true, // 显示工具栏
-  };
-});
+  }
+})
 
 async function getData() {
   try {
-    chartData.value = [{ name: '产品一', value: 80.5 }];
+    chartData.value = [{ name: '产品一', value: 80.5 }]
   } catch (error) {
-    console.log('🚀 ~ getData ~ error:', error);
+    console.log('🚀 ~ getData ~ error:', error)
   }
 }
 
 // 在组件挂载后获取数据
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>

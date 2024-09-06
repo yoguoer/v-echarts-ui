@@ -1,5 +1,5 @@
-import { recursionObject } from '../utils/index.ts';
-import { getToolBox } from './common.ts';
+import { recursionObject } from '../utils/index.ts'
+import { getToolBox } from './common.ts'
 
 // 获取系列配置
 function getSeriesConfig(options, dataStas, dataFormat) {
@@ -77,15 +77,15 @@ function getSeriesConfig(options, dataStas, dataFormat) {
                 value: dataStas[0],
                 detail: {
                   offsetCenter: (() => {
-                    const len = dataStas[0].toString().length - 1;
+                    const len = dataStas[0].toString().length - 1
                     const lenMap = [
                       -(options?.width || 300) / 10,
                       -(options?.width || 300) / 7.5,
                       -(options?.width || 300) / 6.6,
                       -(options?.width || 300) / 5.5,
                       -(options?.width || 300) / 5,
-                    ];
-                    return [lenMap[len], 0];
+                    ]
+                    return [lenMap[len], 0]
                   })(),
                   fontWeight: 400,
                   fontSize:
@@ -98,15 +98,15 @@ function getSeriesConfig(options, dataStas, dataFormat) {
                 value: dataStas[1],
                 detail: {
                   offsetCenter: (() => {
-                    const len = dataStas[0].toString().length - 1;
+                    const len = dataStas[0].toString().length - 1
                     const lenMap = [
                       (options?.width || 300) / 12,
                       (options?.width || 300) / 6,
                       (options?.width || 300) / 4.8,
                       (options?.width || 300) / 5.5,
                       (options?.width || 300) / 6,
-                    ];
-                    return [lenMap[len], 8];
+                    ]
+                    return [lenMap[len], 8]
                   })(),
                   fontWeight: 350,
                   fontSize:
@@ -114,13 +114,13 @@ function getSeriesConfig(options, dataStas, dataFormat) {
                       ? (options?.width || 300) / 7
                       : (options?.width || 300) / 8,
                   formatter: function (value) {
-                    return `/${value}`;
+                    return `/${value}`
                   },
                 },
               },
             ],
       },
-    ];
+    ]
   } else {
     return [
       {
@@ -175,7 +175,7 @@ function getSeriesConfig(options, dataStas, dataFormat) {
           fontSize: 22,
           offsetCenter: [0, '85%'],
           formatter: function (value) {
-            return value + '%';
+            return value + '%'
           },
         },
         smooth: true,
@@ -183,7 +183,7 @@ function getSeriesConfig(options, dataStas, dataFormat) {
         animationDuration: 2000,
         data: dataStas,
       },
-    ];
+    ]
   }
 }
 
@@ -205,10 +205,10 @@ function getTitle(options) {
           },
         },
       ]
-    : [];
+    : []
 }
 class defaultOptTemp {
-  option: any; // 或更具体的类型
+  option: any // 或更具体的类型
   constructor({ options, dataStas, dataFormat }) {
     this.option = {
       toolbox: getToolBox(options),
@@ -233,20 +233,20 @@ class defaultOptTemp {
         radius: (options?.width || 300) * 0.8,
       },
       series: getSeriesConfig(options, dataStas, dataFormat),
-    };
+    }
   }
 }
 
 // 导出 guageOptions 函数，用于生成仪表盘配置项
 export function guageOptions(props) {
-  const { data } = props;
+  const { data } = props
 
   const getDefaultOpt = new defaultOptTemp({
     options: props.params,
     dataStas: data,
     dataFormat: props.dataFormat,
-  }).option;
+  }).option
 
-  const opt = recursionObject({}, getDefaultOpt, props.options);
-  return opt;
+  const opt = recursionObject({}, getDefaultOpt, props.options)
+  return opt
 }

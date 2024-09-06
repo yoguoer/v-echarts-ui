@@ -1,6 +1,6 @@
-import { recursionObject, isArray } from '../utils/index.ts';
-import { getToolBox } from './common.ts';
-import echart from '../theme/theme.json';
+import { recursionObject, isArray } from '../utils/index.ts'
+import { getToolBox } from './common.ts'
+import echart from '../theme/theme.json'
 
 // 获取系列配置
 function getSeriesConfig(pieParams) {
@@ -24,7 +24,7 @@ function getSeriesConfig(pieParams) {
         show: true,
         length: 4,
       },
-    };
+    }
     const seriesSecond = {
       name: pieParams.isNested.seriesSecond.name,
       type: 'pie',
@@ -44,9 +44,9 @@ function getSeriesConfig(pieParams) {
         show: true,
         length: 4,
       },
-    };
-    const newSeries = [firstSecond, seriesSecond];
-    return newSeries;
+    }
+    const newSeries = [firstSecond, seriesSecond]
+    return newSeries
   } else {
     // 如果没有指定嵌套饼图，则生成一个标准的饼图配置
     return [
@@ -70,7 +70,7 @@ function getSeriesConfig(pieParams) {
             fontSize: 16,
           },
           formatter: function (params) {
-            return params.name + '\n' + params.percent + '%';
+            return params.name + '\n' + params.percent + '%'
           },
         },
         labelLine: {
@@ -82,7 +82,7 @@ function getSeriesConfig(pieParams) {
         },
         center: ['50%', '50%'],
       },
-    ];
+    ]
   }
 }
 
@@ -98,7 +98,7 @@ function getSeriesConfig(pieParams) {
  * }
  */
 class defaultOpt {
-  option: any; // 或更具体的类型
+  option: any // 或更具体的类型
   constructor(pieParams) {
     this.option = {
       toolbox: getToolBox(pieParams),
@@ -108,7 +108,7 @@ class defaultOpt {
       tooltip: {
         trigger: 'item',
         formatter: function (params) {
-          return `${params.marker}${params.name}: ${params.value} (${pieParams.unit || 'h'})`;
+          return `${params.marker}${params.name}: ${params.value} (${pieParams.unit || 'h'})`
         },
       },
       legend: {
@@ -120,31 +120,31 @@ class defaultOpt {
         source: [],
       },
       series: getSeriesConfig(pieParams),
-    };
+    }
   }
 }
 
 // 导出 pieOptions 函数，用于生成饼图配置项
 export function pieOptions(props) {
-  const { data = null } = props;
+  const { data = null } = props
 
-  const getDefaultOpt = new defaultOpt(props.params).option;
-  const opt = recursionObject({}, getDefaultOpt, props.options);
+  const getDefaultOpt = new defaultOpt(props.params).option
+  const opt = recursionObject({}, getDefaultOpt, props.options)
 
   if (props.params.dataset && data.length > 1) {
-    opt.dataset.source = data.reverse();
-    opt.dataset.dimensions = Object.keys(data[0]);
+    opt.dataset.source = data.reverse()
+    opt.dataset.dimensions = Object.keys(data[0])
   }
   if (data) {
-    const len = opt.series?.length || 0;
+    const len = opt.series?.length || 0
     if (len === 1) {
-      opt.series[0].data = data;
+      opt.series[0].data = data
     }
     if (len > 1 && isArray(data)) {
       opt.series.forEach((item, index) => {
-        item[index] = data[index];
-      });
+        item[index] = data[index]
+      })
     }
   }
-  return opt;
+  return opt
 }

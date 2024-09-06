@@ -10,18 +10,18 @@
 </template>
 
 <script setup lang="ts" name:="Gauge">
-import { ref, computed, defineProps, defineEmits, onBeforeUpdate } from 'vue';
-import * as echarts from 'echarts/core';
-import { TooltipComponent, TitleComponent, PolarComponent } from 'echarts/components';
-import { GaugeChart, BarChart } from 'echarts/charts';
-import { guageOptions } from '../../options/guage';
-import { useEcharts } from '../../mixins/useEcharts';
-import { emitEvents } from '../../mixins/emitEvents';
-import { useDesign } from "../../../hooks/useDesign";
+import { ref, computed, defineProps, defineEmits, onBeforeUpdate } from 'vue'
+import * as echarts from 'echarts/core'
+import { TooltipComponent, TitleComponent, PolarComponent } from 'echarts/components'
+import { GaugeChart, BarChart } from 'echarts/charts'
+import { guageOptions } from '../../options/guage'
+import { useEcharts } from '../../mixins/useEcharts'
+import { emitEvents } from '../../mixins/emitEvents'
+import { useDesign } from '../../../hooks/useDesign'
 
-echarts.use([TooltipComponent, TitleComponent, PolarComponent, GaugeChart, BarChart]);
+echarts.use([TooltipComponent, TitleComponent, PolarComponent, GaugeChart, BarChart])
 
-const emit = defineEmits(emitEvents);
+const emit = defineEmits(emitEvents)
 
 const props = defineProps({
   id: {
@@ -61,24 +61,24 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-});
+})
 
-const chartOptions = computed(() => guageOptions(props));
+const chartOptions = computed(() => guageOptions(props))
 
 // 定义一个 ref 用于 DOM 引用
-const gaugeChartRef = ref<HTMLElement | null>(null);
-const { chart } = useEcharts(gaugeChartRef, chartOptions.value, props.data, emit, props.loading);
+const gaugeChartRef = ref<HTMLElement | null>(null)
+const { chart } = useEcharts(gaugeChartRef, chartOptions.value, props.data, emit, props.loading)
 // console.log('🚀 ~ chart:', chart);
 
 onBeforeUpdate(() => {
-  chart.value.setOption(chartOptions.value);
-});
+  chart.value.setOption(chartOptions.value)
+})
 
-const { getPrefixCls } = useDesign();
-const prefixCls = getPrefixCls("gauge");
+const { getPrefixCls } = useDesign()
+const prefixCls = getPrefixCls('gauge')
 </script>
 <style lang="less" scoped>
-@prefix-cls: ~"@{vEchartsNamespace}-gauge";
+@prefix-cls: ~'@{vEchartsNamespace}-gauge';
 .@{prefix-cls} {
   position: relative;
 

@@ -10,14 +10,14 @@
 </template>
 
 <script setup lang="ts" name="PieDemo">
-import { vPie } from 'v-echarts-ui';
-import { computed, onMounted, ref } from 'vue';
+import { vPie } from 'v-echarts-ui'
+import { computed, onMounted, ref } from 'vue'
 
-const id = 'PieDemo';
-const chartData = ref([]);
-const width = '100%'; // 可选
-const height = '300px'; // 可选
-const loading = ref(false); // 可选
+const id = 'PieDemo'
+const chartData = ref([])
+const width = '100%' // 可选
+const height = '300px' // 可选
+const loading = ref(false) // 可选
 // 可选，不传则使用默认Options
 // const chartOptions = computed(() => {});
 
@@ -28,22 +28,22 @@ const chartParams = computed(() => {
     isNested: {
       show: false, // 是否为环形
     },
-  };
-});
+  }
+})
 
 async function getData() {
   try {
     chartData.value = [
       { name: '项目类', value: 20 },
       { name: '平台类', value: 80 },
-    ];
+    ]
   } catch (error) {
-    console.log('🚀 ~ getData ~ error:', error);
+    console.log('🚀 ~ getData ~ error:', error)
   }
 }
 
 // 在组件挂载后获取数据
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>

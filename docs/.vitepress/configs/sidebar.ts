@@ -34,7 +34,8 @@ export default {
     {
       text: '动态图表',
       items: [
-        { text: '带搜索的条形图', link: '/zh-CN/components/common-charts/Bar/BarSearch' },
+        { text: '带搜索的条形图', link: '/zh-CN/components/common-charts/Bar/barSearch' },
+        { text: '带搜索的折线图', link: '/zh-CN/components/common-charts/Line/lineSearch' },
       ],
     },
   ],

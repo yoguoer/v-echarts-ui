@@ -77,28 +77,28 @@
 </template>
 
 <script setup lang="ts" name="Search">
-import { ref, unref, defineProps, defineEmits, computed, reactive } from 'vue';
-import { FormType, FormItemType } from '../type';
-import BasicComponent from '../../BasicComponent';
-import { isString, isObject, isUnDef } from '../../utils/is';
+import { ref, unref, defineProps, defineEmits, computed, reactive } from 'vue'
+import { FormType, FormItemType } from '../type'
+import BasicComponent from '../../BasicComponent'
+import { isString, isObject, isUnDef } from '../../utils/is'
 
-const emit = defineEmits(['changeAfter']);
+const emit = defineEmits(['changeAfter'])
 
 const props = defineProps<{
   // 表单数据
-  options: FormType;
-}>();
+  options: FormType
+}>()
 
-let items = computed(() => props.options.items);
+let items = computed(() => props.options.items)
 // Form 表单数据
-const data = reactive(props.options.mode);
+const data = reactive(props.options.mode)
 
 // 表单Ref
-const formRef = ref();
+const formRef = ref()
 // 设置表单的引用，如果配置参数没传入，则使用默认的表单引用，否则使用配置参数的引用
 const setRef = function () {
-  return isUnDef(props.options.ref) ? formRef : props.options.ref;
-};
+  return isUnDef(props.options.ref) ? formRef : props.options.ref
+}
 
 /**
  * 子组件触发的公共事件
@@ -108,24 +108,24 @@ const setRef = function () {
  */
 const triggerEvent = (val: string | undefined, submit: Function, reset: Function) => {
   if (val === 'submit' || submit) {
-    (function () {
+    ;(function () {
       // 表单验证
       setRef().value.validate((valid: boolean) => {
-        if (!valid) return;
-        submit && submit(unref(data));
+        if (!valid) return
+        submit && submit(unref(data))
         if (val === 'reset') {
-          setRef().value.resetFields();
+          setRef().value.resetFields()
         }
-      });
-    })();
+      })
+    })()
   } else if (val === 'reset' || reset) {
     // 重置表单
-    (function () {
-      reset && reset();
-      setRef().value.resetFields();
-    })();
+    ;(function () {
+      reset && reset()
+      setRef().value.resetFields()
+    })()
   }
-};
+}
 
 /**
  * 计算表单项的span
@@ -135,21 +135,21 @@ const triggerEvent = (val: string | undefined, submit: Function, reset: Function
  * @author
  */
 const setSpan = (formItem: Array<FormItemType>, val: string | number | undefined) => {
-  let spanValue = 24;
-  let spanIndex = 0;
+  let spanValue = 24
+  let spanIndex = 0
   formItem.forEach(item => {
     if (item.hasOwnProperty('span')) {
-      let value = isString(item.span) ? parseInt(item.span) : (item.span as number);
-      spanValue = spanValue - value;
-      spanIndex++;
+      let value = isString(item.span) ? parseInt(item.span) : (item.span as number)
+      spanValue = spanValue - value
+      spanIndex++
     }
-  });
+  })
   if (val !== undefined) {
-    return val;
+    return val
   } else {
-    return spanValue / (formItem.length - spanIndex);
+    return spanValue / (formItem.length - spanIndex)
   }
-};
+}
 
 /**
  * 设置表单项或表单项子组件的 key 值
@@ -160,11 +160,11 @@ const setSpan = (formItem: Array<FormItemType>, val: string | number | undefined
  */
 const setKey = (index: number, prop: string | undefined) => {
   if (isUnDef(prop)) {
-    return index;
+    return index
   } else {
-    return index + prop;
+    return index + prop
   }
-};
+}
 
 /**
  * change 事件后置处理器
@@ -174,13 +174,13 @@ const changeHandler = function (parmas: any, prop: string) {
   emit('changeAfter', {
     prop: prop,
     value: parmas,
-  });
-};
+  })
+}
 </script>
 <script lang="ts">
 export default {
   name: 'Search',
-};
+}
 </script>
 <style scoped lang="less">
 .default-form {

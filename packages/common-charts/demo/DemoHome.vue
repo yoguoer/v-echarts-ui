@@ -19,17 +19,17 @@
 </template>
 
 <script lang="ts" setup title="Menu">
-import { reactive, ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { reactive, ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
+const router = useRouter()
 
 const withChildren = computed(() =>
   menuList.filter(item => item.children && item.children.length > 0),
-);
+)
 const withoutChildren = computed(() =>
   menuList.filter(item => !item.children || item.children.length === 0),
-);
+)
 
 const menuList = reactive([
   { title: '测试', name: 'testDemo' },
@@ -52,16 +52,17 @@ const menuList = reactive([
       { title: 'Gauge仪表盘', name: 'GaugeDemo' },
       { title: 'Gauge仪表盘custom', name: 'GaugeCustomDemo' },
       { title: 'BarSearchDemo', name: 'BarSearchDemo' },
+      { title: 'LineSearchDemo', name: 'LineSearchDemo' },
     ],
   },
-]);
+])
 
-const activeIndex = ref('测试');
+const activeIndex = ref('测试')
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log('key:', key, 'keyPath:', keyPath);
-  activeIndex.value = key;
-  router.push({ name: key });
-};
+  console.log('key:', key, 'keyPath:', keyPath)
+  activeIndex.value = key
+  router.push({ name: key })
+}
 </script>
 <style lang="less">
 .demo-home {

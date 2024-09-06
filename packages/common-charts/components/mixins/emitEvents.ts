@@ -9,6 +9,6 @@ const emitEvents = [
   'chart-globalout',
   'chart-contextmenu',
   'chart-legendselectchanged',
-];
+]
 
-export { emitEvents };
+export { emitEvents }

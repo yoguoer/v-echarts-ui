@@ -34,4 +34,9 @@ export default [
     component: () => import('../../BarSearch/BarSearch-demo.vue'),
     name: 'BarSearchDemo',
   },
+  {
+    path: '/LineSearch-demo',
+    component: () => import('../../LineSearch/LineSearch-demo.vue'),
+    name: 'LineSearchDemo',
+  },
 ];

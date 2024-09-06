@@ -1,4 +1,3 @@
-
 /**
  * 判断是否为字符串
  * @param {*} obj
@@ -53,10 +52,10 @@ export function debounce(func, wait, immediate) {
 }
 
 /**
-* 计算数组总和
-* @param {} array
-* @returns total
-*/
+ * 计算数组总和
+ * @param {} array
+ * @returns total
+ */
 
 export function sumArray(array = null) {
   if (!array) return 0

@@ -1,6 +1,6 @@
-import echart from '../theme/theme.json';
-import { sumArray } from '../utils/index.ts';
-let change = false;
+import echart from '../theme/theme.json'
+import { sumArray } from '../utils/index.ts'
+let change = false
 /**
  * 柱状图平均值线配置
  * */
@@ -16,12 +16,12 @@ export function getMarkLine(options = {}, data = null) {
             show: !!options.showAverage,
             color: 'inherit',
             formatter: function (params) {
-              if (!data || !data.series) return 0;
-              const series = data.series[params.seriesIndex];
-              const dataSet = series && series.data;
-              if (!dataSet) return 0;
-              const average = sumArray(dataSet) / dataSet.length;
-              return average.toFixed(2);
+              if (!data || !data.series) return 0
+              const series = data.series[params.seriesIndex]
+              const dataSet = series && series.data
+              if (!dataSet) return 0
+              const average = sumArray(dataSet) / dataSet.length
+              return average.toFixed(2)
             },
             type: 'solid',
           },
@@ -34,7 +34,7 @@ export function getMarkLine(options = {}, data = null) {
         },
       },
     ],
-  };
+  }
 }
 
 /**
@@ -48,7 +48,7 @@ export function getTooltip(options = {}) {
     },
     formatter: function (params) {
       if (options.dataset) {
-        let relVal = params[0].name;
+        let relVal = params[0].name
         for (let i = 0, l = params.length; i < l; i++) {
           relVal +=
             '<br/>' +
@@ -56,25 +56,25 @@ export function getTooltip(options = {}) {
             params[i].seriesName +
             ' : ' +
             params[i].value[params[i].seriesName] +
-            `' (${options.unit || 'h'})'`;
+            `' (${options.unit || 'h'})'`
         }
-        return relVal;
+        return relVal
       } else {
-        let relVal = '';
+        let relVal = ''
         params.forEach(item => {
           if (item.value) {
             relVal +=
-              `${item.marker}${item.seriesName}: ${item.value} ${options.unit || '(h)'}` + '<br/>';
+              `${item.marker}${item.seriesName}: ${item.value} ${options.unit || '(h)'}` + '<br/>'
           } else {
-            relVal += `${item.marker}${item.seriesName}: 暂无数据 <br/>`;
+            relVal += `${item.marker}${item.seriesName}: 暂无数据 <br/>`
           }
-        });
+        })
 
-        return relVal;
+        return relVal
       }
     },
     show: true,
-  };
+  }
 }
 
 /**
@@ -104,7 +104,7 @@ export function getToolBox(options = {}) {
       // dataZoom: { show: true, title: { zoom: '区域缩放', back: '区域还原' }}, // 数据区域缩放
       // restore: { show: true, title: '重置' } // 重置
     },
-  };
+  }
 }
 /**
  *X轴、Y轴的文字调节显示
@@ -118,13 +118,13 @@ export const axisLabel = {
     margin: 10,
   },
   formatter: function (params) {
-    let ytext = params;
+    let ytext = params
     if (ytext.length > 14) {
-      ytext = ytext.substring(0, 12) + '...';
+      ytext = ytext.substring(0, 12) + '...'
     }
-    return ytext;
+    return ytext
   },
-};
+}
 /**
  * Y轴的调节显示
  */
@@ -140,12 +140,12 @@ export const yAxis = {
   axisLine: {
     show: false,
   },
-};
+}
 export const xAxisFormatter = function (params) {
-  let newParamsName = ''; // 最终拼接成的字符串
-  const paramsNameNumber = params.length; // 实际标签的个数
-  const provideNumber = 6; // 每行能显示的字的个数
-  const rowNumber = Math.ceil(paramsNameNumber / provideNumber); // 换行的话，需要显示几行，向上取整
+  let newParamsName = '' // 最终拼接成的字符串
+  const paramsNameNumber = params.length // 实际标签的个数
+  const provideNumber = 6 // 每行能显示的字的个数
+  const rowNumber = Math.ceil(paramsNameNumber / provideNumber) // 换行的话，需要显示几行，向上取整
   /**
    * 判断标签的个数是否大于规定的个数， 如果大于，则进行换行处理 如果不大于，即等于或小于，就返回原标签
    */
@@ -153,23 +153,23 @@ export const xAxisFormatter = function (params) {
   if (paramsNameNumber > provideNumber) {
     /** 循环每一行,p表示行 */
     for (let p = 0; p < rowNumber; p++) {
-      let tempStr = ''; // 表示每一次截取的字符串
-      const start = p * provideNumber; // 开始截取的位置
-      const end = start + provideNumber; // 结束截取的位置
+      let tempStr = '' // 表示每一次截取的字符串
+      const start = p * provideNumber // 开始截取的位置
+      const end = start + provideNumber // 结束截取的位置
       // 此处特殊处理最后一行的索引值
       if (p === rowNumber - 1) {
         // 最后一次不换行
-        tempStr = params.substring(start, paramsNameNumber);
+        tempStr = params.substring(start, paramsNameNumber)
       } else {
         // 每一次拼接字符串并换行
-        tempStr = params.substring(start, end) + '\n';
+        tempStr = params.substring(start, end) + '\n'
       }
-      newParamsName += tempStr; // 最终拼成的字符串
+      newParamsName += tempStr // 最终拼成的字符串
     }
   } else {
     // 将旧标签的值赋给新标签
-    newParamsName = params;
+    newParamsName = params
   }
   // 将最终的字符串返回
-  return newParamsName;
-};
+  return newParamsName
+}

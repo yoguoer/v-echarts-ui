@@ -31,5 +31,11 @@ export default {
         { text: '仪表盘', link: '/zh-CN/components/common-charts/Gauge/gauge' },
       ],
     },
+    {
+      text: '动态图表',
+      items: [
+        { text: '带搜索的条形图', link: '/zh-CN/components/common-charts/Bar/BarSearch' },
+      ],
+    },
   ],
 };

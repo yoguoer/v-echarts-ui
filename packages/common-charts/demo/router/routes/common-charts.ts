@@ -29,4 +29,9 @@ export default [
     component: () => import('../../Gauge/Gauge-custom-demo.vue'),
     name: 'GaugeCustomDemo',
   },
+  {
+    path: '/BarSearch-demo',
+    component: () => import('../../BarSearch/BarSearch-demo.vue'),
+    name: 'BarSearchDemo',
+  },
 ];

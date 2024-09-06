@@ -23,10 +23,13 @@ dist-ssr
 *.sw?
 .vscode
 
+# 文件夹
 docs
 config
 scripts
+packages/common-charts/demo
 
+# 其他文件
 .eslintrc.js
 .eslintignore
 

@@ -1,5 +1,4 @@
-import type { type Component, Ref } from "vue";
-
+import type { type Component, Ref } from 'vue';
 
 declare interface IconType {
   isSvgIcon: boolean;
@@ -19,13 +18,13 @@ interface CompContentType {
 
 declare interface CompType {
   comp: string | Component; // 组件标签名称
-  className?: string, // 组件类名称
+  className?: string; // 组件类名称
   data?: any; // 传入组件数据
-  key?: string; // 组件 key 
+  key?: string; // 组件 key
   attr?: Recordable; // 组件属性
   event?: Recordable; // 组件事件
   content?: CompContentType; // 组件内容
-  children?: Array<CompType> | []; //组件子节点 dom 
+  children?: Array<CompType> | []; // 组件子节点 dom
   ref?: Ref<T>; // 组件 ref 引用
-  slotScope?: any // 作用域插槽参数
+  slotScope?: any; // 作用域插槽参数
 }

@@ -1,5 +1,5 @@
 <template>
-  <vSearch :options="options" />
+  <vSearch :options="searchOptions" />
 </template>
 
 <script setup lang="ts" name="SearchDemo">
@@ -33,7 +33,7 @@ const rules = reactive<FormRules<RuleForm>>({
   ],
 });
 // from 表单配置项
-const options = {
+const searchOptions = {
   mode: data,
   attr: {
     'label-width': 'auto',

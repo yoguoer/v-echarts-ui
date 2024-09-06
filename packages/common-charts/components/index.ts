@@ -5,4 +5,4 @@ export * from './Line'
 export * from './Pie'
 export * from './BasicComponent'
 export * from './Search'
-
+export * from './BarSearch'

@@ -8,6 +8,7 @@ import vBasicComponent from '../components/BasicComponent'
 import vSearch from '../components/Search'
 import vBarSearch from '../components/BarSearch'
 import vLineSearch from '../components/LineSearch'
+import vPieSearch from '../components/PieSearch'
 
 // 存储组件列表
 export const components = [
@@ -19,7 +20,8 @@ export const components = [
   vBasicComponent,
   vSearch,
   vBarSearch,
-  vLineSearch
+  vLineSearch,
+  vPieSearch
 ]
 
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册

@@ -18,7 +18,7 @@ import { computed, onMounted, ref, reactive } from 'vue'
 
 // 响应数据
 let data = reactive({
-  username: '测试一下',
+  username: '测试一下折线图Search',
   view: '0',
 })
 // from 表单配置项
@@ -168,40 +168,25 @@ async function getData() {
             ],
             row: [
               {
-                month: '2024-01',
+                week: '1',
               },
               {
-                month: '2024-02',
+                week: '2',
               },
               {
-                month: '2024-03',
+                week: '3',
               },
               {
-                month: '2023-04',
+                week: '4',
               },
               {
-                month: '2023-05',
+                week: '5',
               },
               {
-                month: '2023-06',
+                week: '6',
               },
               {
-                month: '2023-07',
-              },
-              {
-                month: '2023-08',
-              },
-              {
-                month: '2023-09',
-              },
-              {
-                month: '2023-10',
-              },
-              {
-                month: '2023-11',
-              },
-              {
-                month: '2023-12',
+                week: '7',
               },
             ],
             msgTitle: '计算方法',

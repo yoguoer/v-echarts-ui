@@ -36,6 +36,7 @@ export default {
       items: [
         { text: '带搜索的条形图', link: '/zh-CN/components/common-charts/Bar/barSearch' },
         { text: '带搜索的折线图', link: '/zh-CN/components/common-charts/Line/lineSearch' },
+        { text: '带搜索的饼图', link: '/zh-CN/components/common-charts/Pie/PieSearch' },
       ],
     },
   ],

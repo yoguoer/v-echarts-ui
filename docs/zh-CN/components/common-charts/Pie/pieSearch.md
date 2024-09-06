@@ -4,7 +4,7 @@
 
 <vEcharts-demo
     demo-height="300px"
-    source-code="common-charts:::BarSearch/BarSearch-demo"
+    source-code="common-charts:::PieSearch/PieSearch-demo"
 />
 
 ## 参数
@@ -33,42 +33,9 @@
 
 接口数据结构与基础图表一致
 ```json
-{
-    xAxis: ['week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7'],
-    series: [
-        {
-            name: 2023,
-            data: [0.97, 0.85, 0.67, 0.98, 1.02, 1.01, 0.66],
-        },
-        {
-            name: 2024,
-            data: [0.88, 0.71, 0.54, null, 1.0, 1.03, 0.49],
-        },
-    ],
-    row: [
-        {
-            week: '1',
-        },
-        {
-            week: '2',
-        },
-        {
-            week: '3',
-        },
-        {
-            week: '4',
-        },
-        {
-            week: '5',
-        },
-        {
-            week: '6',
-        },
-        {
-            week: '7',
-        },
-    ],
-    msg: '研发人效指数=单位时间内关闭NPI项目的总标准工时/上述项目的全期间申报工时',
-}
+[
+    { name: '项目类', value: 20 },
+    { name: '平台类', value: 80 },
+]
 ```
 

@@ -53,6 +53,7 @@ const menuList = reactive([
       { title: 'Gauge仪表盘custom', name: 'GaugeCustomDemo' },
       { title: 'BarSearchDemo', name: 'BarSearchDemo' },
       { title: 'LineSearchDemo', name: 'LineSearchDemo' },
+      { title: 'PieSearchDemo', name: 'PieSearchDemo' },
     ],
   },
 ])

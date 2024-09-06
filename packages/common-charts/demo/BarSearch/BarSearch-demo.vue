@@ -18,7 +18,7 @@ import { computed, onMounted, ref, reactive } from 'vue'
 
 // 响应数据
 let data = reactive({
-  username: '测试一下',
+  username: '测试一下条形图Search',
   view: '0',
 })
 // from 表单配置项

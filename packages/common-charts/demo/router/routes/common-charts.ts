@@ -39,4 +39,9 @@ export default [
     component: () => import('../../LineSearch/LineSearch-demo.vue'),
     name: 'LineSearchDemo',
   },
+  {
+    path: '/PieSearch-demo',
+    component: () => import('../../PieSearch/PieSearch-demo.vue'),
+    name: 'PieSearchDemo',
+  },
 ];

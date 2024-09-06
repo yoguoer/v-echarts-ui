@@ -21,7 +21,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/img/vivien-logo.svg',
     // siteTitle: 'v-echarts-ui',
-    outline: 5,
+    outline: 'deep',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/yoguoer' }
     ],

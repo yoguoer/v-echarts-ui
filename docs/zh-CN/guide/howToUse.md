@@ -1,16 +1,19 @@
 # 环境准备
 
 ::: tip 当前封装所使用的库版本
-node 版本为：v18.20.2
 
-element-plus 版本为：2.7.7
+- **Node.js**: v18.20.2
+- **Element Plus**: 2.7.7
+- **Vue**: 3.4.31
+- **ECharts**: 5.5.1
 
-vue 版本为：3.4.31
 :::
 
 ## 安装
 
 ### 1. 安装 v-echarts-ui
+
+为了使用`v-echarts-ui`组件库，你需要先将其安装到你的项目中。根据你的包管理工具，选择以下命令之一执行：
 
 ```bash
 # npm
@@ -29,7 +32,9 @@ pnpm install v-echarts-ui
 
 ### 2. 安装相关依赖
 
-#### element-plus
+由于`v-echarts-ui`依赖于`element-plus`和`echarts`，你还需要安装这些库。
+
+#### 安装 element-plus
 
 ```bash
 npm install element-plus
@@ -43,7 +48,7 @@ yarn add element-plus
 pnpm install element-plus
 ```
 
-#### echarts
+#### 安装 echarts
 
 ```bash
 npm install echarts
@@ -60,20 +65,52 @@ pnpm install echarts
 ### 注意
 
 ::: danger 关于 npm 镜像源
-v-echarts-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
+
+v-echarts-ui 已经发布到 npm 镜像中，下载该包之前需要先切换到特定的 npm 镜像源。
+
+推荐使用`nrm`（npm registry manager）来管理npm镜像源。
+
 :::
 
-如果你使用的私有 npm 仓库，请先将镜像源切换到你的私有 npm 仓库，推荐使用 [nrm](https://www.npmjs.com/package/nrm)  来管理你的镜像源。
+#### 公有镜像
 
-你可以按照以下步骤使用 nrm 切换镜像源：
+如果你正在使用私有npm仓库，但在安装`v-echarts-ui`及其依赖时需要切换到公有npm仓库，可以使用以下命令：
 
-1. 全局安装nrm包：
+1. 切换到 npm 镜像。
+
+```bash
+nrm use npm
+```
+
+2. 下载 v-echarts-ui
+
+```bash
+npm install  v-echarts-ui
+```
+
+3. 安装相关依赖
+
+```bash
+# 切换镜像源到 npm 下载相关依赖
+nrm use npm
+# 安装相关依赖
+npm install element-plus
+npm install echarts
+```
+
+#### 私有镜像
+
+如果你的项目依赖于私有npm仓库，你需要先全局安装`nrm`，然后添加并切换到你的私有npm镜像源。
+
+可以按照以下步骤使用 nrm 切换镜像源：
+
+1. 全局安装 nrm包：
 
    ```bash
    npm install -g nrm
    ```
 
-2. 查看nrm的包源
+2. 查看 nrm 的包源
 
    ```bash
    nrm ls // 查看当前npm的包源
@@ -99,7 +136,7 @@ v-echarts-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜
    npm login
    ```
 
-6. 安装以上步骤安装 v-echarts-ui
+6. 完成以上步骤后，安装 v-echarts-ui
 
    ```bash
    npm install  v-echarts-ui
@@ -112,6 +149,7 @@ v-echarts-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜
    nrm use npm
    # 安装相关依赖
    npm install element-plus
+   npm install echarts
    ```
-
+   
    

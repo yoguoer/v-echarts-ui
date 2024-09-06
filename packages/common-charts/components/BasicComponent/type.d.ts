@@ -17,7 +17,7 @@ interface CompContentType {
 }
 
 declare interface CompType {
-  comp: string | Component // 组件标签名称
+  comp: string | Component // 组件标签名称或组件对象
   className?: string // 组件类名称
   data?: any // 传入组件数据
   key?: string // 组件 key

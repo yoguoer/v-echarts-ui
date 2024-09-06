@@ -51,9 +51,16 @@ const menuList = reactive([
       { title: 'Pie饼图', name: 'PieDemo' },
       { title: 'Gauge仪表盘', name: 'GaugeDemo' },
       { title: 'Gauge仪表盘custom', name: 'GaugeCustomDemo' },
-      { title: 'BarSearchDemo', name: 'BarSearchDemo' },
-      { title: 'LineSearchDemo', name: 'LineSearchDemo' },
-      { title: 'PieSearchDemo', name: 'PieSearchDemo' },
+    ],
+  },
+  {
+    title: '带搜索图表',
+    name: 'search-charts',
+    children: [
+      { title: 'Bar条形图', name: 'BarSearchDemo' },
+      { title: 'Line折线图', name: 'LineSearchDemo' },
+      { title: 'Pie饼图', name: 'PieSearchDemo' },
+      { title: 'Gauge仪表盘', name: 'GaugeSearchDemo' },
     ],
   },
 ])

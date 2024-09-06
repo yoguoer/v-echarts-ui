@@ -44,4 +44,9 @@ export default [
     component: () => import('../../PieSearch/PieSearch-demo.vue'),
     name: 'PieSearchDemo',
   },
+  {
+    path: '/GaugeSearch-demo',
+    component: () => import('../../GaugeSearch/GaugeSearch-demo.vue'),
+    name: 'GaugeSearchDemo',
+  },
 ];

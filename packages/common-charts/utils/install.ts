@@ -9,6 +9,7 @@ import vSearch from '../components/Search'
 import vBarSearch from '../components/BarSearch'
 import vLineSearch from '../components/LineSearch'
 import vPieSearch from '../components/PieSearch'
+import vGaugeSearch from '../components/GaugeSearch'
 
 // 存储组件列表
 export const components = [
@@ -21,7 +22,8 @@ export const components = [
   vSearch,
   vBarSearch,
   vLineSearch,
-  vPieSearch
+  vPieSearch,
+  vGaugeSearch
 ]
 
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册

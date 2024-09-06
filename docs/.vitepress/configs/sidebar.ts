@@ -6,11 +6,11 @@ export default {
         {
           text: '入门',
           items: [
-            { text: '使用图表', link: '/zh-CN/guide/howToUse' },
+            { text: '环境准备', link: '/zh-CN/guide/howToUse' },
             { text: '使用筛选项', link: '/zh-CN/guide/howToSearch' },
+            { text: '使用图表', link: '/zh-CN/guide/common-charts' },
           ],
         },
-        { text: '基础图表', link: '/zh-CN/guide/common-charts' },
       ],
     },
   ],
@@ -21,23 +21,35 @@ export default {
         {
           text: '条形图',
           items: [
-            { text: '入门介绍', link: '/zh-CN/components/common-charts/Bar/readme' },
             { text: '基础条形图', link: '/zh-CN/components/common-charts/Bar/bar' },
             { text: '堆叠条形图', link: '/zh-CN/components/common-charts/Bar/barStack' },
+            { text: '条形图搜索', link: '/zh-CN/components/common-charts/Bar/barSearch' },
           ],
         },
-        { text: '折线图', link: '/zh-CN/components/common-charts/Line/line' },
-        { text: '饼图', link: '/zh-CN/components/common-charts/Pie/pie' },
-        { text: '仪表盘', link: '/zh-CN/components/common-charts/Gauge/gauge' },
-      ],
-    },
-    {
-      text: '动态图表',
-      items: [
-        { text: '带搜索的条形图', link: '/zh-CN/components/common-charts/Bar/barSearch' },
-        { text: '带搜索的折线图', link: '/zh-CN/components/common-charts/Line/lineSearch' },
-        { text: '带搜索的饼图', link: '/zh-CN/components/common-charts/Pie/PieSearch' },
+        {
+          text: '折线图',
+          items: [
+            { text: '基础折线图', link: '/zh-CN/components/common-charts/Line/line' },
+            { text: '折线图搜索', link: '/zh-CN/components/common-charts/Line/lineSearch' },
+          ],
+        },
+        {
+          text: '饼图',
+          link: '/zh-CN/components/common-charts/Pie/pie',
+          items: [
+            { text: '基础饼图', link: '/zh-CN/components/common-charts/Pie/pie' },
+            { text: '饼图搜索', link: '/zh-CN/components/common-charts/Pie/PieSearch' }
+          ],
+        }, 
+        {
+          text: '仪表盘',
+          link: '/zh-CN/components/common-charts/Gauge/gauge',
+          items: [
+            { text: '基础仪表盘', link: '/zh-CN/components/common-charts/Gauge/gauge' },
+            { text: '仪表盘搜索', link: '/zh-CN/components/common-charts/Gauge/GaugeSearch' },
+          ],
+        }, 
       ],
     },
   ],
-};
+}

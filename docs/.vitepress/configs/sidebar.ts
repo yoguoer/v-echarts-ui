@@ -38,7 +38,7 @@ export default {
           link: '/zh-CN/components/common-charts/Pie/pie',
           items: [
             { text: '基础饼图', link: '/zh-CN/components/common-charts/Pie/pie' },
-            { text: '饼图搜索', link: '/zh-CN/components/common-charts/Pie/PieSearch' }
+            { text: '饼图搜索', link: '/zh-CN/components/common-charts/Pie/pieSearch' }
           ],
         }, 
         {
@@ -46,7 +46,7 @@ export default {
           link: '/zh-CN/components/common-charts/Gauge/gauge',
           items: [
             { text: '基础仪表盘', link: '/zh-CN/components/common-charts/Gauge/gauge' },
-            { text: '仪表盘搜索', link: '/zh-CN/components/common-charts/Gauge/GaugeSearch' },
+            { text: '仪表盘搜索', link: '/zh-CN/components/common-charts/Gauge/gaugeSearch' },
           ],
         }, 
       ],

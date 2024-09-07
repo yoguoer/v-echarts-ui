@@ -9,7 +9,8 @@
     :id="id"
     :loading="loading"
     :searchOptions="searchOptions"
-    @changeAfter="changeAfter" />
+    @changeAfter="changeAfter"
+    @chartClick="chartClick" />
 </template>
 
 <script setup lang="ts" name="BarSearchDemo">
@@ -204,5 +205,9 @@ function changeAfter(val) {
   data[val.prop] = val.value
   console.log('🚀搜索条件发生了变化:', val)
   getData()
+}
+// 点击图例事件
+function chartClick(data) {
+console.log("🚀 ~ chartClick ~ data:", data)
 }
 </script>

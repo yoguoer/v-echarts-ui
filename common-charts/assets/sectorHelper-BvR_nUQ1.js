@@ -1,0 +1,1 @@
+import{am as t,o as u,bs as i}from"./useDesign-B0GHgcaT.js";function d(e,a,n){var r=e.get("borderRadius");if(r==null)return n?{cornerRadius:0}:null;t(r)||(r=[r,r,r,r]);var o=Math.abs(a.r||0-a.r0||0);return{cornerRadius:u(r,function(s){return i(s,o)})}}export{d as g};

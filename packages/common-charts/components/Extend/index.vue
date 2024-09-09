@@ -60,7 +60,6 @@ export default {
 .@{prefix-cls}-tools-all,
 .@{prefix-cls}-tools-one {
   position: relative;
-  z-index: 1000000000;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

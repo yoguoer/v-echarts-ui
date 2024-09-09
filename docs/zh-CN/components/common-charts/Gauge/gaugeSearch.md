@@ -24,11 +24,19 @@
 
 ## 事件
 
-| 事件名      | 参数                           | 作用                                                         |
-| ----------- | ------------------------------ | ------------------------------------------------------------ |
-| changeAfter | `val: { props:'', value: '' }` | 当搜索条件发生变化时触发，返回包含变动字段名称和变动值的对象 |
-
-
+| 事件名                    | 介绍                                                         | 参数                           |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------ |
+| chart-click               | 点击图表（非图例、提示框等辅助元素）时触发                   | params                         |
+| chart-dblclick            | 双击图表时触发                                               | params                         |
+| chart-mousedown           | 鼠标按钮在图表上被按下时触发                                 | params                         |
+| chart-mousemove           | 鼠标在图表区域内移动时触发                                   | params                         |
+| chart-mouseup             | 鼠标按钮在图表上释放时触发                                   | params                         |
+| chart-mouseover           | 鼠标移动到图表上某个元素上时触发                             | params                         |
+| chart-mouseout            | 鼠标离开图表上某个元素时触发                                 | params                         |
+| chart-globalout           | 鼠标完全离开图表区域时触发                                   | params                         |
+| chart-contextmenu         | 在图表上触发右键点击时（通常用于打开上下文菜单）触发         | params                         |
+| chart-legendselectchanged | 图例中的某个系列（series）的选中状态发生变化时触发           | params                         |
+| changeAfter               | 当搜索条件发生变化时触发，返回包含变动字段名称和变动值的对象 | `val: { props:'', value: '' }` |
 
 ## 数据结构
 

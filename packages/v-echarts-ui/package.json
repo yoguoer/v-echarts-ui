@@ -1,6 +1,6 @@
 {
   "name": "@v-echarts-ui/v-echarts-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "./index.ts",
   "dependencies": {

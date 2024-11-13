@@ -1,6 +1,6 @@
 {
   "name": "@v-echarts-ui/common-charts",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Vivien",
   "license": "MIT",
   "description": "v-echarts-ui 中的基础图表",

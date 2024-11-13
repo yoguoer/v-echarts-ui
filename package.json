@@ -1,6 +1,6 @@
 {
   "name": "v-echarts-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Vivien",
   "license": "MIT",
   "description": "基于 Vue3 的图表组件库，提供丰富的图表类型和易于集成的接口，帮助你快速构建数据可视化应用。",

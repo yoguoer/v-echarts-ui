@@ -65,6 +65,7 @@ export default {
   justify-content: flex-end;
   top: 30px;
   right: 10px;
+  z-index:999;
   .tips {
     margin-right: 5px;
   }
